@@ -5,7 +5,7 @@ description: 'Build the MuJoCo simulation environment for humanoid dual-arm robo
 team: 'Yuchen Yang'
 supervisor: 'Dr.Cheng Ding (JAKA Engineer)'
 image:
-    url: '../../Project2.png'
+    url: '/website/Project2.png'
     alt: 'Simulation environment of desk grasp task.'
 ---
 
@@ -22,17 +22,17 @@ Built on the [MuJoCo](https://mujoco.org/) platform, I have created a simulation
 <div style="text-align: center;">
     <br>
     <div style="display: inline-block; text-align: center; width: 35%; vertical-align: top;">
-        <img src="../../P2_Figure_111_a.png" alt="Desk Grasp" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P2_Figure_111_a.png" alt="Desk Grasp" style="width: 100%;" class="hover-img"/>
         <p>(a)</p>
     </div>
     <div style="display: inline-block; text-align: center; width: 30%; vertical-align: top;">
-        <img src="../../P2_Figure_111_b.png" alt="Shelf Grasp" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P2_Figure_111_b.png" alt="Shelf Grasp" style="width: 100%;" class="hover-img"/>
         <p>(b)</p>
     </div>
 </div>
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 40%; vertical-align: top;">
-        <img src="../../P2_Figure_111_c.png" alt="Pick and Place" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P2_Figure_111_c.png" alt="Pick and Place" style="width: 100%;" class="hover-img"/>
         <p>(c)</p>
         <p style="text-align: center;">
             <strong>Figure 1.1.1: Task Environment</strong> <br>
@@ -51,7 +51,7 @@ The standard process for collecting presentation data is facilitated by a data g
 <div style="text-align: center;">
     <br>
     <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
-        <img src="../../P2_Figure_211.png" alt="Flow Chart" style="width: 100%;" class="hover-img" />
+        <img src="/website/P2_Figure_211.png" alt="Flow Chart" style="width: 100%;" class="hover-img" />
         <p style="text-align: center;">
             <strong>Figure 2.1.1: Demonstration Collection Pipeline</strong> <br>
         </p>
@@ -106,7 +106,7 @@ Given the configuration of the three-finger dexterous hand and the constraints o
 
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
-        <img src="../../P2_Figure_231.png" alt="Hand Mapping" style="width: 100%;" class="hover-img" />
+        <img src="/website/P2_Figure_231.png" alt="Hand Mapping" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
         <strong>Figure 2.3.1: Hand Motion Mapping</strong> <br>
@@ -117,7 +117,7 @@ An example of the robot control in the simulation process is demonstrated in the
 
 <div style="text-align: center; margin: 20px 0;">
     <video id="SimVideo" controls muted width="720" class="hover-img">
-        <source src="../../P2_Movie_231.mp4" type="video/mp4">
+        <source src="/website/P2_Movie_231.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
@@ -128,7 +128,7 @@ The stacking task challenges the robot to grasp items and place them with precis
 
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
-        <img src="../../P2_Figure_241.png" alt="Stack Generation" style="width: 100%;" class="hover-img" />
+        <img src="/website/P2_Figure_241.png" alt="Stack Generation" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
         <strong>Figure 2.4.1: Stack Generation</strong> <br>
@@ -139,7 +139,7 @@ An example of an RGB video reconstruction from the camera for the stacking task 
 
 <div style="text-align: center; margin: 20px 0;">
     <video id="CamVideo" controls muted width="720" class="hover-img">
-        <source src="../../P2_Movie_241.mp4" type="video/mp4">
+        <source src="/website/P2_Movie_241.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>

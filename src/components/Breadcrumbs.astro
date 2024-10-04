@@ -2,7 +2,7 @@
 // Breadcrumbs.astro
 const currentPath = Astro.url.pathname;
 const pathSegments = currentPath.split('/').filter(Boolean);
-const breadcrumbs = [{ title: 'Home', url: '/' }].concat(
+const breadcrumbs = [{ title: '', url: '/' }].concat(
     pathSegments.map((segment, index, array) => 
     {
         const title = segment.charAt(0).toUpperCase() + segment.slice(1);

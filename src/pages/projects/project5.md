@@ -5,7 +5,7 @@ description: 'Realized iterative design process and machining process plan, incl
 team: 'Yuchen Yang'
 supervisor: 'Prof. Jingyu Pei'
 image:
-    url: '../../Project5.png'
+    url: '/website/Project5.png'
     alt: 'Machining Process Plan.'
 ---
 This is a course project for [***ME3224-Manufacturing Process***](https://me.sjtu.edu.cn/news/135655.html), guided by Prof.[Jingyu Pei](https://me.sjtu.edu.cn/teacher_directory1/peijingyu.html) A machining process plan has been developed, embracing the concept of iterative design.
@@ -20,7 +20,7 @@ The part selected is the right thigh mechanism (Figure 1.1.1). Its primary funct
 During operation, the parts experience reciprocating motion, leading to complex alternating stresses, which can cause fatigue damage. Therefore, the parts require high stiffness and strength, wear-resistant surfaces, and meet stringent precision requirements.
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
-        <img src="../../P5_Figure_111.png" alt="Overall Structure and Parts Selection" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P5_Figure_111.png" alt="Overall Structure and Parts Selection" style="width: 100%;" class="hover-img"/>
         <p style="text-align: center;">
             <strong>
             Figure 1.1.1: Overall Structure and Parts Selection
@@ -30,7 +30,7 @@ During operation, the parts experience reciprocating motion, leading to complex 
 </div>
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
-        <img src="../../P5_Figure_112.png" alt="Related Parts Layout" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P5_Figure_112.png" alt="Related Parts Layout" style="width: 100%;" class="hover-img"/>
         <p style="text-align: center;">
             <strong>
             Figure 1.1.2: Related Parts Layout
@@ -44,7 +44,7 @@ During operation, the parts experience reciprocating motion, leading to complex 
 The original drawing is depicted in Figure 1.2.1. To facilitate the machining process design, the part is enlarged fourfold in subsequent analyses.
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
-        <img src="../../P5_Figure_121.png" alt="Original Drawing of Thigh Part" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P5_Figure_121.png" alt="Original Drawing of Thigh Part" style="width: 100%;" class="hover-img"/>
         <p style="text-align: center;">
             <strong>
             Figure 1.2.1: Original Drawing of Thigh Part
@@ -58,7 +58,7 @@ The original drawing is depicted in Figure 1.2.1. To facilitate the machining pr
 In line with the requirements for structural manufacturability, the part has been improved, with the overall outcome displayed in Figure 2.1.1. Subsequently, a breakdown analysis of the part's iterative design is conducted.
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 70%; vertical-align: top;">
-        <img src="../../P5_Figure_211.png" alt="Overview of the Improved Part" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P5_Figure_211.png" alt="Overview of the Improved Part" style="width: 100%;" class="hover-img"/>
         <p style="text-align: center;">
             <strong>
             Figure 2.1.1: Overview of the Improved Part
@@ -76,7 +76,7 @@ Figure 2.2.1 highlights the critical dimensions that require higher precision in
 These precision settings correspond to the part's requirements. For an analysis of whether these can be achieved in machining, refer to the dimensional chain analysis in Section 5.
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 70%; vertical-align: top;">
-        <img src="../../P5_Figure_221.png" alt="Dimensional Tolerance Setting" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P5_Figure_221.png" alt="Dimensional Tolerance Setting" style="width: 100%;" class="hover-img"/>
         <p style="text-align: center;">
             <strong>
             Figure 2.2.1: Dimensional Tolerance Setting
@@ -92,7 +92,7 @@ The parallelism requirements, indicated in blue in Figure 2.3.1, are associated 
 - The parallelism requirements related to planes B and C, which are primarily to ensure the overall flatness and symmetry of the part.
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 70%; vertical-align: top;">
-        <img src="../../P5_Figure_231.png" alt="Position Accuracy Setting" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P5_Figure_231.png" alt="Position Accuracy Setting" style="width: 100%;" class="hover-img"/>
         <p style="text-align: center;">
             <strong>
             Figure 2.3.1: Position Accuracy Setting
@@ -104,7 +104,7 @@ The parallelism requirements, indicated in blue in Figure 2.3.1, are associated 
 ### 2.4 Chamfer Setting
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 70%; vertical-align: top;">
-        <img src="../../P5_Figure_241.png" alt="Chamfer Setting" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P5_Figure_241.png" alt="Chamfer Setting" style="width: 100%;" class="hover-img"/>
         <p style="text-align: center;">
             <strong>
             Figure 2.4.1: Chamfer Setting
@@ -120,7 +120,7 @@ The parallelism requirements, indicated in blue in Figure 2.3.1, are associated 
 - To meet surface roughness requirements, grinding processes are necessary, hence backing grooves are set to prevent potential damage to end faces by grinding tools.
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 70%; vertical-align: top;">
-        <img src="../../P5_Figure_251.png" alt="Hole Roughness Setting" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P5_Figure_251.png" alt="Hole Roughness Setting" style="width: 100%;" class="hover-img"/>
         <p style="text-align: center;">
             <strong>
             Figure 2.5.1: Hole Roughness Setting
@@ -130,7 +130,7 @@ The parallelism requirements, indicated in blue in Figure 2.3.1, are associated 
 </div>
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 70%; vertical-align: top;">
-        <img src="../../P5_Figure_252.png" alt="Plane roughness and Backing Groove Setting" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P5_Figure_252.png" alt="Plane roughness and Backing Groove Setting" style="width: 100%;" class="hover-img"/>
         <p style="text-align: center;">
             <strong>
             Figure 2.5.2: Plane roughness and Backing Groove Setting
@@ -157,7 +157,7 @@ Notes:
             Table 4.1.1: Standard Tolerance
             </strong>
         </p>
-        <img src="../../P5_Table_411.png" alt="Standard Tolerance" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P5_Table_411.png" alt="Standard Tolerance" style="width: 100%;" class="hover-img"/>
     </div>
 </div>
 <div style="text-align: center;">
@@ -167,7 +167,7 @@ Notes:
             Table 4.1.2: Machining Process Plan
             </strong>
         </p>
-        <img src="../../P5_Table_412.png" alt="Machining Process Plan" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P5_Table_412.png" alt="Machining Process Plan" style="width: 100%;" class="hover-img"/>
     </div>
 </div>
 
@@ -176,7 +176,7 @@ Notes:
 Each hole is directly machined, and the comparison of processing requirements and processing process precision is shown in Figure 5.1.1, which meets the requirements.
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
-        <img src="../../P5_Figure_511.png" alt="Hole Accuracy Inspection" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P5_Figure_511.png" alt="Hole Accuracy Inspection" style="width: 100%;" class="hover-img"/>
         <p style="text-align: center;">
             <strong>
             Figure 5.1.1: Hole Accuracy Inspection: Comparison of Machining Requirements and Process Accuracy
@@ -190,7 +190,7 @@ The dimensional chain analysis for important dimensions is shown in Table 5.2.1,
 
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 70%; vertical-align: top;">
-        <img src="../../P5_Figure_521.png" alt="Plane Accuracy Inspection" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P5_Figure_521.png" alt="Plane Accuracy Inspection" style="width: 100%;" class="hover-img"/>
         <p style="text-align: center;">
             <strong>
             Figure 5.2.1: Plane Accuracy Inspection: Comparison of Machining Requirements and Process Accuracy
@@ -205,7 +205,7 @@ The dimensional chain analysis for important dimensions is shown in Table 5.2.1,
             Table 5.2.1: Dimensional Chain Analysis
             </strong>
         </p>
-        <img src="../../P5_Table_521.png" alt="Dimensional Chain Analysis" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P5_Table_521.png" alt="Dimensional Chain Analysis" style="width: 100%;" class="hover-img"/>
     </div>
 </div>
 

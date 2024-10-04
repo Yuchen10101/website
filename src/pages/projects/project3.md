@@ -5,7 +5,7 @@ description: 'Designed a self-designed 6-DoF robot arm, where a series of kinema
 team: 'Yuchen Yang(Leader), Yuxuan Chen, Zhouyi Lin, Qihong Hu and Xiaoyang Jia'
 supervisor: 'Zhenhua Xiong, Jianhu Wu'
 image:
-    url: '../../Project3.gif'
+    url: '/website/Project3.gif'
     alt: ' RRT of Robot arm.'
 ---
 
@@ -22,7 +22,7 @@ With reference to the [JAKA Zu7](https://www.jaka.com/productDetails/JAKA_Zu_7) 
 <div style="text-align: center;">
     <br>
     <div style="display: inline-block; text-align: center; width: 55%; vertical-align: top;">
-        <img src="../../P3_Figure_111.png" alt="Desk Grasp" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P3_Figure_111.png" alt="Desk Grasp" style="width: 100%;" class="hover-img"/>
         <p style="text-align: center;">
             <strong>Figure 1.1.1: Robot Arm and its Main Components</strong> <br>
         </p>
@@ -32,7 +32,7 @@ With reference to the [JAKA Zu7](https://www.jaka.com/productDetails/JAKA_Zu_7) 
 ### 1.2 Overall Display
 <div style="text-align: center; margin: 20px 0;">
     <video id="Rotate" controls muted width="400" class="hover-img">
-        <source src="../../P3_Movie_111.mp4" type="video/mp4">
+        <source src="/website/P3_Movie_111.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
@@ -66,7 +66,7 @@ According to the above parameters and through market research, we locked [Harmon
         <strong>Table 2.2.1: Harmonic CSG series reducer parameters</strong>
     </p>
     <div style="display: inline-block; text-align: center; width: 55%; vertical-align: top;">
-        <img src="../../P3_Table_221.png" alt="Harmonic CSG" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P3_Table_221.png" alt="Harmonic CSG" style="width: 100%;" class="hover-img"/>
     </div>
 </div>
 
@@ -75,7 +75,7 @@ According to the above parameters and through market research, we locked [Harmon
         <strong>Table 2.2.2: Inovance MS1-R series servo motor parameters</strong>
     </p>
     <div style="display: inline-block; text-align: center; width: 55%; vertical-align: top;">
-        <img src="../../P3_Table_222.png" alt="Inovance MS1-R" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P3_Table_222.png" alt="Inovance MS1-R" style="width: 100%;" class="hover-img"/>
     </div>
 </div>
 
@@ -84,7 +84,7 @@ According to the above parameters and through market research, we locked [Harmon
         <strong>Table 2.2.3: SRI M221X series torque sensor parameters</strong>
     </p>
     <div style="display: inline-block; text-align: center; width: 55%; vertical-align: top;">
-        <img src="../../P3_Table_223.png" alt="SRI M221X" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P3_Table_223.png" alt="SRI M221X" style="width: 100%;" class="hover-img"/>
     </div>
 </div>
 
@@ -93,7 +93,7 @@ According to the above parameters and through market research, we locked [Harmon
         <strong>Table 2.2.4: Selection summary</strong>
     </p>
     <div style="display: inline-block; text-align: center; width: 55%; vertical-align: top;">
-        <img src="../../P3_Table_224.png" alt="All selection" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P3_Table_224.png" alt="All selection" style="width: 100%;" class="hover-img"/>
     </div>
 </div>
 <br>
@@ -109,11 +109,11 @@ We established the Denavit-Hartenberg (DH) coordinate system and parameters for 
 <div style="text-align: center;">
     <br>
     <div style="display: inline-block; text-align: center; width: 28%; vertical-align: top;">
-        <img src="../../P3_Figure_311_a.png" alt="Original DH" style="width: 80%;" class="hover-img"/>
+        <img src="/website/P3_Figure_311_a.png" alt="Original DH" style="width: 80%;" class="hover-img"/>
         <p>(a)</p>
     </div>
     <div style="display: inline-block; text-align: center; width: 28%; vertical-align: top;">
-        <img src="../../P3_Figure_311_b.png" alt="Simplified DH" style="width: 80%;" class="hover-img"/>
+        <img src="/website/P3_Figure_311_b.png" alt="Simplified DH" style="width: 80%;" class="hover-img"/>
         <p>(b)</p>
     </div>
     <p style="text-align: center;">
@@ -127,7 +127,7 @@ We established the Denavit-Hartenberg (DH) coordinate system and parameters for 
         <strong>Table 3.1.1: Original DH parameters </strong>
     </p>
     <div style="display: inline-block; text-align: center; width: 55%; vertical-align: top;">
-        <img src="../../P3_Table_311.png" alt="Original DH Para" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P3_Table_311.png" alt="Original DH Para" style="width: 100%;" class="hover-img"/>
     </div>
 </div>
 <div style="text-align: center;">
@@ -135,7 +135,7 @@ We established the Denavit-Hartenberg (DH) coordinate system and parameters for 
         <strong>Table 3.1.2: Simplified DH parameters</strong>
     </p>
     <div style="display: inline-block; text-align: center; width: 55%; vertical-align: top;">
-        <img src="../../P3_Table_312.png" alt="Simplified DH Para" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P3_Table_312.png" alt="Simplified DH Para" style="width: 100%;" class="hover-img"/>
     </div>
 </div>
 
@@ -663,13 +663,13 @@ We have implemented a series of advanced kinematics and dynamics functions, incl
 Monte Carlo method, also known as statistical simulation method, is a numerical method to solve mathematical problems by means of random sampling (pseudorandom numbers). With the Monte Carlo method, a large number of sampling points can be randomly selected to build a complete workspace of the robot as much as possible. The sampling process and its result are shown below.
 <div style="text-align: center; margin: 20px 0;">
     <video id="WS1" controls muted width="400" class="hover-img">
-        <source src="../../P3_Movie_511.mp4" type="video/mp4">
+        <source src="/website/P3_Movie_511.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
 <div style="text-align: center; margin: 20px 0;">
     <video id="WS2" controls muted width="400" class="hover-img">
-        <source src="../../P3_Movie_512.mp4" type="video/mp4">
+        <source src="/website/P3_Movie_512.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
@@ -683,7 +683,7 @@ The videos below show RRT results (orange for final path, yellow for explored bu
 
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
-        <img src="../../P3_Figure_521.png" alt="RRT" style="width: 100%;" class="hover-img" />
+        <img src="/website/P3_Figure_521.png" alt="RRT" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
         <strong>Figure 5.2.1: Flow Chart for RRT </strong> <br>
@@ -692,26 +692,26 @@ The videos below show RRT results (orange for final path, yellow for explored bu
 <div style="text-align: center; margin: 20px 0;">
     <div style="display: inline-block; text-align: center; width: 400px; vertical-align: top;">
         <video controls muted width="100%" class="hover-img">
-            <source src="../../P3_Movie_521.mp4" type="video/mp4">
+            <source src="/website/P3_Movie_521.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
     <div style="display: inline-block; text-align: center; width: 400px; vertical-align: top;">
         <video controls muted width="100%" class="hover-img">
-            <source src="../../P3_Movie_522.mp4" type="video/mp4">
+            <source src="/website/P3_Movie_522.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
 </div>
 <div style="text-align: center; margin: 20px 0;">
     <video id="Rotate" controls muted width="400" class="hover-img">
-        <source src="../../P3_Movie_533.mp4" type="video/mp4">
+        <source src="/website/P3_Movie_533.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 80%; vertical-align: top;">
-        <img src="../../P3_Figure_522.png" alt="q_qd_qdd" style="width: 100%;" class="hover-img" />
+        <img src="/website/P3_Figure_522.png" alt="q_qd_qdd" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
         <strong>Figure 5.2.2: Displacement, Velocity and Acceleration of Joints </strong> <br>
@@ -724,7 +724,7 @@ We set the physical parameters of the ball, including gravity and initial condit
 
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 25%; vertical-align: top;">
-        <img src="../../P3_Figure_531.png" alt="Ball Catching" style="width: 100%;" class="hover-img" />
+        <img src="/website/P3_Figure_531.png" alt="Ball Catching" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
         <strong>Figure 5.3.1:  Flow Chart for Ball Catching</strong> <br>
@@ -732,7 +732,7 @@ We set the physical parameters of the ball, including gravity and initial condit
 </div>
 <div style="text-align: center; margin: 20px 0;">
     <video id="Ball Catching" controls muted width="600" class="hover-img">
-        <source src="../../P3_Movie_531.mp4" type="video/mp4">
+        <source src="/website/P3_Movie_531.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
@@ -769,13 +769,13 @@ Using Robotics Toolbox, we generate trajectories based on initial joint angle an
 
 <div style="text-align: center; margin: 20px 0;">
     <video id="Dynamics" controls muted width="500" class="hover-img">
-        <source src="../../P3_Movie_541.mp4" type="video/mp4">
+        <source src="/website/P3_Movie_541.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
-        <img src="../../P3_Figure_541.png" alt="Dynamics" style="width: 100%;" class="hover-img" />
+        <img src="/website/P3_Figure_541.png" alt="Dynamics" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
         <strong>Figure 5.4.1:  Joint Displacement, Velocity, Acceleration and Torque</strong> <br>
@@ -792,7 +792,7 @@ This function is implemented by [Dynamics.m].
 Simulation is performed using the Simscape Multibody module in Simulink. After importing the.urdf file, the corresponding .SLX simulation file is automatically generated, which contains the main modules including the joint, the connecting rod and the corresponding coordinate transformation matrix (Figure 6.1.1, Figure 6.1.2).
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 75%; vertical-align: top;">
-        <img src="../../P3_Figure_611.png" alt="Simulink Model" style="width: 100%;" class="hover-img" />
+        <img src="/website/P3_Figure_611.png" alt="Simulink Model" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
         <strong>Figure 6.1.1: Simulink Model </strong> <br>
@@ -800,7 +800,7 @@ Simulation is performed using the Simscape Multibody module in Simulink. After i
 </div>
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 85%; vertical-align: top;">
-        <img src="../../P3_Figure_612.png" alt="Simulink Modules" style="width: 100%;" class="hover-img" />
+        <img src="/website/P3_Figure_612.png" alt="Simulink Modules" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
         <strong>Figure 6.1.2: Some Modules </strong> <br>
@@ -813,7 +813,7 @@ We set trajectories for each joint (Figure 6.2.1), and compared the theoretical 
 
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 50%; vertical-align: top;">
-        <img src="../../P3_Figure_621.png" alt="Joint Trajectory" style="width: 100%;" class="hover-img" />
+        <img src="/website/P3_Figure_621.png" alt="Joint Trajectory" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
         <strong>Figure 6.2.1: Joint Trajectory </strong> <br>
@@ -821,7 +821,7 @@ We set trajectories for each joint (Figure 6.2.1), and compared the theoretical 
 </div>
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 50%; vertical-align: top;">
-        <img src="../../P3_Figure_622.png" alt="Torque Comparison" style="width: 100%;" class="hover-img" />
+        <img src="/website/P3_Figure_622.png" alt="Torque Comparison" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
         <strong>Figure 6.2.2: Torque Comparison</strong> <br>
