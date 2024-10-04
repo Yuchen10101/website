@@ -2,7 +2,7 @@
 layout: ../../layouts/MarkdownPostLayout.astro
 title: 'A Self-Designed 6-DoF Robot Arm with Kinematics&Dynamics Functions Realization'
 description: 'Designed a self-designed 6-DoF robot arm, where a series of kinematics&dynamics analysis and functions are realized.'
-team: 'Yuchen Yang(Leader), Yuxuan Chen, Zhouyi Lin, Qihong Hu and Xiaoyang Jia'
+team: 'Yuchen Yang(Leader), Yuxuan Chen, Qihong Hu, Zhouyi Lin and Xiaoyang Jia'
 supervisor: 'Zhenhua Xiong, Jianhu Wu'
 image:
     url: '/website/Project3.gif'
@@ -10,6 +10,7 @@ image:
 ---
 
 This is a course project of ***ME3403-Robotics*** guided by Prof.[Zhenhua Xiong](https://me.sjtu.edu.cn/teacher_directory1/xiongzhenhua.html) and Dr.[Jianhua Wu](https://me.sjtu.edu.cn/teacher_directory1/wujianhua.html). We designed a 6-DoF robot arm, based on which we carried out **component selection**, **kinematics analysis**, **accuracy analysis**, **kinematics & dynamics simulation** and other **complicated functions**.
+The code is available on [GitHub](https://github.com/Yuchen10101/robotics-project/).
 <br>
 <br>
 
@@ -20,11 +21,10 @@ This is a course project of ***ME3403-Robotics*** guided by Prof.[Zhenhua Xiong]
 With reference to the [JAKA Zu7](https://www.jaka.com/productDetails/JAKA_Zu_7) structure, we designed a 6-DoF robot arm with an arm span of 0.8m (Figure 1.1). For simplicity and versatility, there are mainly four kinds of mechanical parts: three joints near the base called Base_Joint, three joints near the tool end called End_Joint, two linked arms called Straight_Arm and Curved_Arm.
 
 <div style="text-align: center;">
-    <br>
     <div style="display: inline-block; text-align: center; width: 55%; vertical-align: top;">
         <img src="/website/P3_Figure_111.png" alt="Desk Grasp" style="width: 100%;" class="hover-img"/>
         <p style="text-align: center;">
-            <strong>Figure 1.1.1: Robot Arm and its Main Components</strong> <br>
+            <strong>Figure 1.1.1: Robot Arm and its Main Components</strong>
         </p>
     </div>
 </div>
@@ -36,8 +36,6 @@ With reference to the [JAKA Zu7](https://www.jaka.com/productDetails/JAKA_Zu_7) 
         Your browser does not support the video tag.
     </video>
 </div>
-<br>
-<br>
 
 ## 2. Selection of Reducer, Motor and Sensor
 <span class="highlight"><em>Contributor: Qihong Hu, Zhouyi Lin</em></span>
@@ -96,18 +94,15 @@ According to the above parameters and through market research, we locked [Harmon
         <img src="/website/P3_Table_224.png" alt="All selection" style="width: 100%;" class="hover-img"/>
     </div>
 </div>
-<br>
-<br>
 
 ## 3. Kinematics Analysis
 <span class="highlight"><em>Contributor: Yuchen Yang, Yuxuan Chen</em></span>
 
 ### 3.1 Denavit–Hartenberg Parameters
 
-We established the Denavit-Hartenberg (DH) coordinate system and parameters for the robot arm, as shown in Figure 3.1.1(a) and Table 3.1.1. To simplify the kinematics derivation, we created a set of simplified DH parameters, depicted in Figure 3.1.1(b) and Table 3.1.2. This simplification led to d3 being zero, which in turn made our kinematics equations more concise. Note that these simplified parameters are exclusively used for deriving kinematic formulas; the original parameters are retained for all other purposes. The kinematic equivalence between the simplified and original DH parameters is verified by DH_verify.m.
+We established the Denavit-Hartenberg (DH) coordinate system and parameters for the robot arm, as shown in Figure 3.1.1(a) and Table 3.1.1. To simplify the kinematics derivation, we created a set of simplified DH parameters, depicted in Figure 3.1.1(b) and Table 3.1.2. This simplification led to d3 being zero, which in turn made our kinematics equations more concise. Note that these simplified parameters are exclusively used for deriving kinematic formulas; the original parameters are retained for all other purposes. The kinematic equivalence between the simplified and original DH parameters is verified by [DH_verify.m](https://github.com/Yuchen10101/robotics-project/blob/main/Kinematics/DH_verify.m).
 
 <div style="text-align: center;">
-    <br>
     <div style="display: inline-block; text-align: center; width: 28%; vertical-align: top;">
         <img src="/website/P3_Figure_311_a.png" alt="Original DH" style="width: 80%;" class="hover-img"/>
         <p>(a)</p>
@@ -274,8 +269,7 @@ We established the Denavit-Hartenberg (DH) coordinate system and parameters for 
     \end{aligned}
     $$
 </p>
-This formula is implemented by [fkine_c.m] and verified in [All_kine.m]. With the same input, the result of the function in fkine_c.m is the same as that of the fkine function in Robotics Toolbox, which verifies its correctness.
-<br>
+This formula is implemented by [fkine_c.m](https://github.com/Yuchen10101/robotics-project/blob/main/Kinematics/fkine_c.m) and verified in [All_kine.m](https://github.com/Yuchen10101/robotics-project/blob/main/Kinematics/All_kine.m). With the same input, the result of the function in fkine_c.m is the same as that of the fkine function in Robotics Toolbox, which verifies its correctness.
 
 ### 3.3 Inverse Kinematics
 **Comparison of forward and inverse calculation of <sup>1</sup>T<sub>6</sub>**:
@@ -415,7 +409,7 @@ From inverse calculation:
     Substituting these into \(c_3^2+s_3^2=1\), we get \(k_1c_{23}+k_2s_{23} = \frac{k_1^2+k_2^2+a_3^2-a_2^2}{2a_3}\)<br>
     By trigonometric substitution, we get the eight solutions of \(\theta_2+\theta_3\):<br>
     \(\theta_{23} = atan2(k_1^2+k_2^2+a_3^2-a_2^2,\pm\sqrt{4a_3^2(k_1^2+k_2^2)-(k_1^2+k_2^2+a_3^2-a_2^2)^2})-atan2(k_1,k_2)\)<br>
-    Then we get the eight solutions of \(\theta_4\) as \(\theta_4=\theta_{234}-\theta_{23}\).<br><br>
+    Then we get the eight solutions of \(\theta_4\) as \(\theta_4=\theta_{234}-\theta_{23}\).<br>
     (2) \(\theta_3\):<br>
     $$
     \left\{
@@ -432,13 +426,12 @@ From inverse calculation:
     \end{aligned}
     \right.
     $$
-    Thus we get eight numbers, four solutions of \(\theta_3\): \(\theta_3 = atan2(\frac{-k_1c_{23}+k_1s_{23}}{a_2},\frac{k_1c_{23}+k_2s_{23}-a_3}{a_2})\)<br><br>
+    Thus we get eight numbers, four solutions of \(\theta_3\): \(\theta_3 = atan2(\frac{-k_1c_{23}+k_1s_{23}}{a_2},\frac{k_1c_{23}+k_2s_{23}-a_3}{a_2})\)<br>
     (3) \(\theta_2\):<br>
     We can get eight numbers, four solutions of \(\theta_2\) as \(\theta_2 = \theta_{234}-\theta_{4}-\theta_{3}\)
 </p>
 
-These formulas are implemented by [ikine_c_all.m] as direct analytical solutions, and the numerical solutions are realized in [ikine_numerical.m]. These are all verified in All_kine.m. With the same input, the results of the custom analytical solutions, custom numerical solutions and ikine function in Robotics Toolbox are mutual corroborated.
-<br>
+These formulas are implemented by [ikine_c_all.m](https://github.com/Yuchen10101/robotics-project/blob/main/Kinematics/ikine_c_all.m) as direct analytical solutions, and the numerical solutions are realized in [ikine_numerical.m](https://github.com/Yuchen10101/robotics-project/blob/main/Kinematics/ikine_numerical.m). These are all verified in [All_kine.m](https://github.com/Yuchen10101/robotics-project/blob/main/Kinematics/All_kine.m). With the same input, the results of the custom analytical solutions, custom numerical solutions and ikine function in Robotics Toolbox are mutual corroborated.
 
 ### 3.4 Jacobian Matrix
 We derive the Jacobian matrix under the tool coordinate.
@@ -574,9 +567,7 @@ $$
     $$
 </p>
 
-The Jacobian matrixes under the tool coordinate are implemented in [jacob_T.m], and the Jacobian matrixes under the world coordinate are implemented in [jacob.m]. With the Robotics Toolbox jacob0 and jacobn functions, these custom functions are all verified in All_kine.m.
-<br>
-<br>
+The Jacobian matrixes under the tool coordinate are implemented in [jacob_T.m](https://github.com/Yuchen10101/robotics-project/blob/main/Kinematics/jacob_T.m), and the Jacobian matrixes under the world coordinate are implemented in [jacob.m](https://github.com/Yuchen10101/robotics-project/blob/main/Kinematics/jacob.m). With the Robotics Toolbox jacob0 and jacobn functions, these custom functions are all verified in [All_kine.m](https://github.com/Yuchen10101/robotics-project/blob/main/Kinematics/All_kine.m).
 
 ## 4. Accuracy Analysis
 <span class="highlight"><em>Contributor: Qihong Hu</em></span><br>
@@ -653,10 +644,9 @@ $$
 $$
 Only the error corresponding to one special pose was calculated here, and the overall accuracy was estimated to be \(\pm 0.3mm\).
 </p>
-<br>
 
 ## 5. Advanced Functions
-<span class="highlight"><em>Contributor: Yuchen Yang, Yuxuan Chen</em></span>
+<span class="highlight"><em>Contributor: Yuchen Yang, Yuxuan Chen, Zhouyi Lin</em></span>
 
 We have implemented a series of advanced kinematics and dynamics functions, including workspace visualization, RRT obstacle-avoided path planning, ball catching, and dynamic analysis of certain trajectory.
 ### 5.1 Workspace Visualization
@@ -686,7 +676,7 @@ The videos below show RRT results (orange for final path, yellow for explored bu
         <img src="/website/P3_Figure_521.png" alt="RRT" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
-        <strong>Figure 5.2.1: Flow Chart for RRT </strong> <br>
+        <strong>Figure 5.2.1: Flow Chart for RRT </strong>
     </p>
 </div>
 <div style="text-align: center; margin: 20px 0;">
@@ -714,10 +704,11 @@ The videos below show RRT results (orange for final path, yellow for explored bu
         <img src="/website/P3_Figure_522.png" alt="q_qd_qdd" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
-        <strong>Figure 5.2.2: Displacement, Velocity and Acceleration of Joints </strong> <br>
+        <strong>Figure 5.2.2: Displacement, Velocity and Acceleration of Joints </strong> 
     </p>
 </div>
-This RRT path planning and its visualization are implemented by [RRT_traj.m] and [visualize_RRT.m]. The [visualize_traj_and_para.m] visualizes the curves of displacement, velocity and acceleration.
+
+This RRT path planning and its visualization are implemented by [RRT_traj.m](https://github.com/Yuchen10101/robotics-project/blob/main/Advanced_Functions/RRT/RRT_traj.m) and [visualize_RRT.m](https://github.com/Yuchen10101/robotics-project/blob/main/Advanced_Functions/RRT/visualize_RRT.m). The [visualize_traj_and_para.m](https://github.com/Yuchen10101/robotics-project/blob/main/Advanced_Functions/RRT/visualize_traj_and_para.m) visualizes the curves of displacement, velocity and acceleration.
 
 ### 5.3 Ball Catching
 We set the physical parameters of the ball, including gravity and initial conditions, and calculated the ball's flight trajectory. The catchball function is defined to compute the robot's position and posture for catching the ball.  By using inverse kinematics and trajectory generation functions, we planned the robot's movements to ensure timely and accurate catching.  Verification of the robot's ability to grasp the ball was done through spatial and temporal conditions.  The detailed process is shown in flow chart (Figure 5.3.1). 
@@ -727,7 +718,7 @@ We set the physical parameters of the ball, including gravity and initial condit
         <img src="/website/P3_Figure_531.png" alt="Ball Catching" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
-        <strong>Figure 5.3.1:  Flow Chart for Ball Catching</strong> <br>
+        <strong>Figure 5.3.1:  Flow Chart for Ball Catching</strong>
     </p>
 </div>
 <div style="text-align: center; margin: 20px 0;">
@@ -736,7 +727,8 @@ We set the physical parameters of the ball, including gravity and initial condit
         Your browser does not support the video tag.
     </video>
 </div>
-This function is implemented by [CatchBall.m].
+
+This function is implemented by [CatchBall.m](https://github.com/Yuchen10101/robotics-project/blob/main/Advanced_Functions/CatchBall/CatchBall.m).
 
 ### 5.4 Dynamic Analysis of Certain Trajectory
 The Newton-Euler formulation, derived from Newton's Second Law, provides a comprehensive model of robotic dynamics by accounting for all forces, moments, and interactions between links.<br>
@@ -778,12 +770,11 @@ Using Robotics Toolbox, we generate trajectories based on initial joint angle an
         <img src="/website/P3_Figure_541.png" alt="Dynamics" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
-        <strong>Figure 5.4.1:  Joint Displacement, Velocity, Acceleration and Torque</strong> <br>
+        <strong>Figure 5.4.1:  Joint Displacement, Velocity, Acceleration and Torque</strong>
     </p>
 </div>
-This function is implemented by [Dynamics.m].
-<br>
-<br>
+
+This function is implemented by [Dynamics.m](https://github.com/Yuchen10101/robotics-project/blob/main/Advanced_Functions/Dynamics/Dynamics.m).
 
 ## 6. Dynamics Simulation
 <span class="highlight"><em>Contributor: Xiaoyang Jia</em></span>
@@ -795,7 +786,7 @@ Simulation is performed using the Simscape Multibody module in Simulink. After i
         <img src="/website/P3_Figure_611.png" alt="Simulink Model" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
-        <strong>Figure 6.1.1: Simulink Model </strong> <br>
+        <strong>Figure 6.1.1: Simulink Model </strong>
     </p>
 </div>
 <div style="text-align: center;">
@@ -803,7 +794,7 @@ Simulation is performed using the Simscape Multibody module in Simulink. After i
         <img src="/website/P3_Figure_612.png" alt="Simulink Modules" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
-        <strong>Figure 6.1.2: Some Modules </strong> <br>
+        <strong>Figure 6.1.2: Some Modules </strong>
     </p>
 </div>
 
@@ -816,7 +807,7 @@ We set trajectories for each joint (Figure 6.2.1), and compared the theoretical 
         <img src="/website/P3_Figure_621.png" alt="Joint Trajectory" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
-        <strong>Figure 6.2.1: Joint Trajectory </strong> <br>
+        <strong>Figure 6.2.1: Joint Trajectory </strong>
     </p>
 </div>
 <div style="text-align: center;">
@@ -824,10 +815,11 @@ We set trajectories for each joint (Figure 6.2.1), and compared the theoretical 
         <img src="/website/P3_Figure_622.png" alt="Torque Comparison" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
-        <strong>Figure 6.2.2: Torque Comparison</strong> <br>
+        <strong>Figure 6.2.2: Torque Comparison</strong>
     </p>
 </div>
-This function is implemented by [verification.m].
+
+This function is implemented by [verification.m](https://github.com/Yuchen10101/robotics-project/blob/main/Simulation/verification.m).
 
 
 <style>
