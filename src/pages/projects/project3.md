@@ -269,6 +269,7 @@ We established the Denavit-Hartenberg (DH) coordinate system and parameters for 
     \end{aligned}
     $$
 </p>
+
 This formula is implemented by [fkine_c.m](https://github.com/Yuchen10101/robotics-project/blob/main/Kinematics/fkine_c.m) and verified in [All_kine.m](https://github.com/Yuchen10101/robotics-project/blob/main/Kinematics/All_kine.m). With the same input, the result of the function in fkine_c.m is the same as that of the fkine function in Robotics Toolbox, which verifies its correctness.
 
 ### 3.3 Inverse Kinematics
