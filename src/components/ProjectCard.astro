@@ -1,0 +1,63 @@
+---
+// ProjectCard.astro
+import ProjectElement from '../components/ProjectElement.astro';
+const title = "PROJECT"
+const allPosts = await Astro.glob('../pages/projects/*.md');
+---
+
+<div class="card">
+    <div class="vertical-title">{title}</div>
+    <ol class="project-list">
+		{allPosts.map((post) => 
+		<ProjectElement url={post.url} title={post.frontmatter.title} 
+		imageSrc={post.frontmatter.image.url} description={post.frontmatter.description} />)}
+	</ol>
+    <div class="vertical-title">{title}</div>
+</div>
+
+<style>
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    position: relative;
+    overflow: hidden;
+    width: 80%; 
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.vertical-title {
+    position: absolute;
+    top: 0;
+    right: 0;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    margin: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.project-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    grid-gap: 20px;
+}
+
+.project-list li {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+</style>

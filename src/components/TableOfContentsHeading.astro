@@ -1,0 +1,34 @@
+---
+// TableOfContentsHeading.astro
+const { heading } = Astro.props;
+---
+<li>
+    <a href={'#' + heading.slug} class="toc-link">
+        {heading.text}
+    </a>
+    {
+        heading.subheadings.length > 0 && (
+        <ul>
+            {heading.subheadings.map((subheading) => (
+            <Astro.self heading={subheading} />
+            ))}
+        </ul>
+        )
+    }
+</li>
+
+<style>
+    .toc-link {
+        text-decoration: none;
+        color: #505050;
+        font-size: 1em;
+        display: block;
+        padding: 5px;
+        transition: color 0.2s ease-in-out;
+    }
+
+    .toc-link:hover {
+        color: #1d1d1d;
+        text-decoration: underline;
+    }
+</style>

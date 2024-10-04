@@ -1,0 +1,38 @@
+---
+//FixedHeader.astro
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+<header class="fixed-header">
+    <div class="header-container">
+        <div class="breadcrumbs-container">
+            <Breadcrumbs />
+        </div>
+    </div>
+</header>
+<style>
+    .fixed-header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        padding: 0;
+    }
+
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        max-width: 1200px;
+        padding: 10px;
+    }
+
+    .breadcrumbs-container {
+        padding-bottom: 15px;
+        margin-right: auto;
+    }
+
+</style>

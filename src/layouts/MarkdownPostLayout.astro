@@ -1,0 +1,64 @@
+---
+// MarkdownPostLayout.astro
+import TableOfContents from '../components/TableOfContents.astro';
+const {frontmatter, headings} = Astro.props;
+import Header from '../components/FixedHeader.astro';
+import '../styles/global.css';
+---
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+    </head>
+    <body>
+        <Header />
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> 
+        <div class="content-wrapper">
+            <h1>{frontmatter.title}</h1>
+            <p><em><strong>Team</strong>: {frontmatter.team}</em></p>
+            <p><em><strong>Supervisor</strong>: {frontmatter.supervisor}</em></p>
+            <TableOfContents headings={headings} />
+            <article>
+                <slot />
+            </article>
+        </div>
+    </body>
+</html>
+
+<style>
+    p {
+        font-size: 1.3em;
+        line-height: 1;
+        margin-bottom: 1em;
+    }
+
+    .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        margin-left: 310px;
+        padding: 20px;
+        width: calc(100% - 20px);
+        max-width: 1000px;
+    }
+
+    article {
+        font-size: 1.15em;
+        line-height: 2;
+    }
+
+    @media (max-width: 768px) {
+        .toc {
+            position: relative;
+            width: auto;
+            height: auto;
+            border-right: none;
+        }
+
+        .content-wrapper {
+            margin-left: 0;
+            width: auto;
+        }
+    }
+</style>

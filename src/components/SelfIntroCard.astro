@@ -1,0 +1,70 @@
+---
+// SelfIntroCard.astro
+const title = "About Me";
+---
+<div class="intro-card">
+    <div class="content">
+        <h2>{title}</h2>
+        <p>
+            Hi there! I am a senior undergraduate at the 
+            <a href= "https://me.sjtu.edu.cn/"> School of Mechanical Engineering, Shanghai Jiao Tong University</a>, 
+            advised by Prof. 
+            <a href= "https://me.sjtu.edu.cn/teacher_directory1/shengxinjun.html">Xinjun Sheng</a>.
+        </p>
+        <p>
+            Previously, under the guidance of Dr. 
+            <a href= "https://psy.sjtu.edu.cn/index.php?m=content&c=index&a=show&catid=11221&id=208">Binglei Zhao</a> and Prof. 
+            <a href= "https://bme.shanghaitech.edu.cn/2021/0326/c8204a62068/page.htm">Han Zhang</a>, 
+            I had the privilege of exploring the mysteries of the human brain through cognitive science and neuroimaging.
+        </p>
+        <p>
+            Right now, my research interests lie in dexterous manipulation and human-robot interaction. 
+        </p>
+    </div>
+</div>
+
+<style>
+.intro-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.intro-card:hover {
+    transform: translateY(-5px);
+}
+
+.content {
+    padding: 50px;
+    text-align: left;
+}
+
+h2 {
+    margin: 20px 0;
+    font-size: 2rem;
+}
+
+a {
+    color:rgba(0,0,0,1);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    margin: 1em 0;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: rgba(0,0,0,0.6);
+}
+</style>

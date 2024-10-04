@@ -1,0 +1,117 @@
+---
+// ResearchElement.astro
+const { title, href, imageSrc, description,pdflink} = Astro.props;
+function highlightDescription(desc) {
+    const pattern = /(Yuchen Yang(?:\*)?)/gi;
+    return desc.replace(pattern,"<strong>$1</strong>");
+}
+const processedDescription = highlightDescription(description);
+---
+
+<div class="research-element">
+    <div class="image">
+        <img src={imageSrc} alt="PaperImg" />
+    </div>
+    <div class="content">
+        <h2 class="title">
+            <a href={href} title={title}>{title}</a>
+        </h2>
+        <Fragment set:html={processedDescription} />
+    </div>
+    <a href={pdflink} class="download-button" download>
+        <button>Download PDF</button>
+    </a>
+</div>
+
+<style>
+    .research-element {
+        position: relative;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        width: 90%; 
+        max-width: 1000px;
+        margin-left: 80px;
+        margin-right: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .research-element:hover {
+        transform: translateY(-5px);
+    }
+
+    .image {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+    }
+
+    .image img {
+        height: 100%;
+        width: auto;
+        display: block;
+    }
+
+    .content {
+        padding: 20px;
+        text-align: center;
+        margin-left: 260px;
+        margin-bottom: 20px;
+    }
+
+    .content h2.title a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .content h2.title a:hover {
+        text-decoration: underline;
+    }
+
+    .content p {
+        margin: 0;
+        font-size: 1rem;
+        color: rgba(0,0,0,0.9);
+    }
+
+    .download-button {
+        position: absolute;
+        right: 20px;
+        bottom: 0px;
+        padding: 0px 0px;
+        background-color: #eeeeee;
+        color: rgb(80, 80, 80);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-family: serif;
+        transition: background-color 0.3s ease;
+    }
+
+    .download-button:hover {
+        background-color: #cfcfcf;
+    }
+
+    .download-button button {
+        padding: 5px 5px;
+        background-color: #eeeeee;
+        color: rgb(80, 80, 80);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-family: serif;
+        transition: background-color 0.3s ease;
+    }
+
+    .download-button button:hover {
+        background-color: #cfcfcf;
+    }
+
+</style>
