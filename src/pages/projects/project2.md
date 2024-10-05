@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Simulation and Demonstration Collection Pipeline for Dual-Arm Robot'
 description: 'Build the MuJoCo simulation environment for humanoid dual-arm robot and creating the demonstration collection pipeline based on data glove.'
 team: 'Yuchen Yang'
-supervisor: 'Dr.Cheng Ding (JAKA Engineer)'
+supervisor: 'Dr. Cheng Ding (JAKA Engineer)'
 image:
     url: '/website/Project2.png'
     alt: 'Simulation environment of desk grasp task.'
@@ -13,11 +13,11 @@ image:
 Built on the [MuJoCo](https://mujoco.org/) platform, I have created a simulation environment for a human-shaped dual-arm robot that encompasses three distinct task scenarios. The environment incorporates over 40 different item models and over 70 diverse textures. Each item and environmental element is accompanied by a model file and the corresponding MJCF configuration file.
 
 ### 1.1 Three Task Scenarios
-1. **Desk Grasp**: This scenario simulates the task of grasping items on a desktop. The environment includes a variety of foods, fruits, and common daily items (Figure 1.1.1a).
+**1. Desk Grasp**: This scenario simulates the task of grasping items on a desktop. The environment includes a variety of foods, fruits, and common daily items (Figure 1.1.1a).
 
-2. **Shelf Grasp**: Designed to simulate the process of grabbing items from a shelf, this environment features various items such as beverage bottles, cans, and boxes. The complexity of this environment is intended to test the robot's recognition and grasping capabilities (Figure 1.1.1b).
+**2. Shelf Grasp**: Designed to simulate the process of grabbing items from a shelf, this environment features various items such as beverage bottles, cans, and boxes. The complexity of this environment is intended to test the robot's recognition and grasping capabilities (Figure 1.1.1b).
 
-3. **Pick and Place**: In this setup, multiple bins are used to test both grasping and placing actions. The robot must not only recognize and grasp an item but also place it in a specific location (Figure 1c).
+**3. Pick and Place**: In this setup, multiple bins are used to test both grasping and placing actions. The robot must not only recognize and grasp an item but also place it in a specific location (Figure 1c).
 
 <div style="text-align: center;">
     <br>
@@ -59,11 +59,11 @@ The standard process for collecting presentation data is facilitated by a data g
     <br>
 </div>
 
-### 2.2 Arm motion mapping
+### 2.2 Arm Motion Mapping
+**1. Calculate the Relative Rotation Matrix**
+<br>
+Each sensor establishes a coordinate system, and the relative rotations between these systems need to be determined.
 <p>
-    1. <strong>Calculate the Relative Rotation Matrix</strong>
-    <br>
-    Each sensor establishes a coordinate system, and the relative rotations between these systems need to be determined.
     $$
     \begin{align}
     ^{Fore}R_{Hand} &= ^{0}R_{Fore}^T\cdot^{0}R_{Hand} = quat2rot(quatFore)^{T} \cdot quat2rot(quatHand) \\
@@ -73,10 +73,10 @@ The standard process for collecting presentation data is facilitated by a data g
     $$
 </p>
 
+**2. Calculate Changes Over Time**
+<br>
 <p>
-    2. <strong>Calculate Changes Over Time</strong>
-    <br>
-     The change in the relative rotation matrix of adjacent sensors must be calculated with respect to the initial time. This quantifies how the relative rotation matrix at the current time point \( t \) differs from that at the initial time point \( t_0 \).
+    The change in the relative rotation matrix of adjacent sensors must be calculated with respect to the initial time. This quantifies how the relative rotation matrix at the current time point \(t\) differs from that at the initial time point \(t_0\).
     $$
     \begin{align}
     ^{Fore}R_{Hand}^{t_0 \rightarrow t} &= (^{Fore}R_{Hand}^{t_0})^T\cdot ^{Fore}R_{Hand}^{t}\\
@@ -86,10 +86,10 @@ The standard process for collecting presentation data is facilitated by a data g
     $$
 </p>
 
+**3. Convert to Euler Angles**
+<br>
+The rotation matrix is converted into Euler angles, and a selected angle is multiplied by the corresponding coefficient to adjust for the robot's motion capabilities.
 <p>
-    3. <strong>Convert to Euler Angles</strong>
-    <br>
-    The rotation matrix is converted into Euler angles, and a selected angle is multiplied by the corresponding coefficient to adjust for the robot's motion capabilities.
     $$
     \begin{align}
     {\color{Gray} For\ joint\ i:}&\\
@@ -100,7 +100,7 @@ The standard process for collecting presentation data is facilitated by a data g
     $$
 </p>
 
-### 2.3 Hand motion mapping
+### 2.3 Hand Motion Mapping
 
 Given the configuration of the three-finger dexterous hand and the constraints of sensor data, a unique and efficient hand mapping method has been devised. On the data glove, the joints of the thumb, index finger, and middle finger can be directly mapped to their corresponding joints on the dexterous hand. The floating joint is managed by angle sensors in the ring and pinky fingers. As there are no angle sensors for the three joints of the dexterous hand, a force feedback-based control method is utilized. In the simulation environment, when the tactile sensor detects contact between the fingertip and an object that exceeds a certain force threshold, the system adjusts the joint angle, simulating the bending action of the finger until the contact force reaches a preset maximum (Figure 3).
 
@@ -122,7 +122,7 @@ An example of the robot control in the simulation process is demonstrated in the
     </video>
 </div>
 
-### 2.4 Stacking task
+### 2.4 Stacking Task
 
 The stacking task challenges the robot to grasp items and place them with precision according to the shape of the stacking area. To simulate complex stacking tasks, a flexible and customizable stack generation function has been designed. It automatically creates stack areas and corresponding square workpieces based on preset parameters, such as stack length, width, height, structure, and arrangement (Figure 4). The positions of items and stacks are randomly generated, ensuring a variety of stacking scenarios.
 

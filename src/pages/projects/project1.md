@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Solve Long-horizon Stacking Task with Demonstration-based Reinforcement Learning (In Progress)'
 description: 'Solved complex, long-horizon stacking task of dual-arm robot using demonstration-based reinforcement learning(Waiting...).'
 team: 'Yuchen Yang'
-supervisor: 'Prof. Xinjun Sheng, Dr.Cheng Ding (JAKA Engineer)'
+supervisor: 'Prof. Xinjun Sheng, Dr. Cheng Ding (JAKA Engineer)'
 image:
     url: '/website/Project1.gif'
     alt: 'Stacking Task.'

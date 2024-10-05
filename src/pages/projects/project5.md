@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: 'Iterative Design and Machining Process Plan'
+title: 'Iterative Design and Machining Process Plan for an Irregular Part'
 description: 'Realized iterative design process and machining process plan, including structural manufacturability improvement, machining process planning, dimensional chain calculation and accuracy checking.'
 team: 'Yuchen Yang'
 supervisor: 'Prof. Jingyu Pei'
@@ -8,7 +8,7 @@ image:
     url: '/website/Project5.png'
     alt: 'Machining Process Plan.'
 ---
-This is a course project for [***ME3224-Manufacturing Process***](https://me.sjtu.edu.cn/news/135655.html), guided by Prof.[Jingyu Pei](https://me.sjtu.edu.cn/teacher_directory1/peijingyu.html) A machining process plan has been developed, embracing the concept of iterative design.
+This is a course project for [***ME3224-Manufacturing Process***](https://me.sjtu.edu.cn/news/135655.html), guided by Prof. [Jingyu Pei](https://me.sjtu.edu.cn/teacher_directory1/peijingyu.html) A machining process plan has been developed, embracing the concept of iterative design.
 
 ## 1. Mechanical Part Selection
 ### 1.1 Introduction to Part Working Conditions
@@ -35,6 +35,7 @@ During operation, the parts experience reciprocating motion, leading to complex 
             <strong>
             Figure 1.1.2: Related Parts Layout
             </strong>
+            <br>
             1 - Motor; 2 - First gear; 3 - Second gear and cam; 4 - Roller; 5 - Thigh shaft; 6 - Thigh; 7 - Lower leg
         </p>
     </div>

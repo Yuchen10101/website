@@ -2,7 +2,7 @@
 // ResearchElement.astro
 const { title, href, imageSrc, description,pdflink} = Astro.props;
 function highlightDescription(desc) {
-    const pattern = /(Yuchen Yang(?:\*)?)/gi;
+    const pattern = /(Yuchen Yang?)/gi;
     return desc.replace(pattern,"<strong>$1</strong>");
 }
 const processedDescription = highlightDescription(description);

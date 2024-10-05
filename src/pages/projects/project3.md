@@ -3,13 +3,13 @@ layout: ../../layouts/MarkdownPostLayout.astro
 title: 'A Self-Designed 6-DoF Robot Arm with Kinematics&Dynamics Functions Realization'
 description: 'Designed a self-designed 6-DoF robot arm, where a series of kinematics&dynamics analysis and functions are realized.'
 team: 'Yuchen Yang(Leader), Yuxuan Chen, Qihong Hu, Zhouyi Lin and Xiaoyang Jia'
-supervisor: 'Zhenhua Xiong, Jianhu Wu'
+supervisor: 'Prof. Zhenhua Xiong, Dr. Jianhu Wu'
 image:
     url: '/website/Project3.gif'
     alt: ' RRT of Robot arm.'
 ---
 
-This is a course project of ***ME3403-Robotics*** guided by Prof.[Zhenhua Xiong](https://me.sjtu.edu.cn/teacher_directory1/xiongzhenhua.html) and Dr.[Jianhua Wu](https://me.sjtu.edu.cn/teacher_directory1/wujianhua.html). We designed a 6-DoF robot arm, based on which we carried out **component selection**, **kinematics analysis**, **accuracy analysis**, **kinematics & dynamics simulation** and other **complicated functions**.
+This is a course project of ***ME3403-Robotics*** guided by Prof. [Zhenhua Xiong](https://me.sjtu.edu.cn/teacher_directory1/xiongzhenhua.html) and Dr. [Jianhua Wu](https://me.sjtu.edu.cn/teacher_directory1/wujianhua.html). We designed a 6-DoF robot arm, based on which we carried out **component selection**, **kinematics analysis**, **accuracy analysis**, **kinematics & dynamics simulation** and other **complicated functions**.
 The code is available on [GitHub](https://github.com/Yuchen10101/robotics-project/).
 <br>
 <br>
@@ -668,7 +668,7 @@ This function is realized in [workspace_process.m] and [workspace_quick_solution
 
 ### 5.2 RRT obstacle-avoided Path Planning
 The Rapidly-exploring Random Tree (RRT) algorithm is a probabilistic method for path planning in robotics and autonomous navigation. The algorithm operates by initiating a tree structure with the starting point as its root. It then iteratively improves the tree by extending it towards free space through Random sampling, checking for collisions with obstacles along the way.<br>
-When applying RRT to robot arm obstacle avoidance, the algorithm extends the tree by adding new nodes that represent potential motion increments. Each new node is evaluated for collisions with the environment;  if a node doesn't collide with any obstacles, it is retained and can serve as the base for further extensions.  This process continues until a node is added that connects the tree to the target point, at which point a path from the start to the target has been found.<br>
+When applying RRT to robot arm obstacle avoidance, the algorithm extends the tree by adding new nodes that represent potential motion increments. Each new node is evaluated for collisions with the environment;  if a node does not collide with any obstacles, it is retained and can serve as the base for further extensions.  This process continues until a node is added that connects the tree to the target point, at which point a path from the start to the target has been found.<br>
 Once a path from the start to the target is identified, it is typically a series of discrete points. To create a smooth trajectory from these points, techniques like quintic spline interpolation are applied to ensure continuity and differentiability.<br>
 The videos below show RRT results (orange for final path, yellow for explored but failed path).The joints' displacement, velocity and acceleration of final path are shown in Figure 5.2.1.
 
