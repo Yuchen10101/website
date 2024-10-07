@@ -1,0 +1,52 @@
+---
+// ExperienceCard.astro
+import ExperienceElement from './ExperienceElement.astro';
+const title = "EXPERIENCE"
+---
+<div class="experience-card">
+    <ExperienceElement
+        company= "JAKA Robotics"
+        href= "https://www.jakarobotics.com/"
+        imageSrc= "/website/Company1.png"
+        location= "Shanghai, China"
+        department= "Robotics Division Research and Development Center"
+        position= "Research Intern"
+        duration="June.2024 - Present"
+    />
+    <div class="vertical-title">{title}</div>
+</div>
+
+<style>
+    .experience-card {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+        position: relative;
+        overflow: hidden;
+        width: 80%; 
+        max-width: 1600px;
+        min-height: 240px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        transitiontransition: transform 0.3s ease-in-out;
+    }
+
+    .experience-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .vertical-title {
+        position: absolute;
+        top: 0;
+        right: 0;
+        writing-mode: vertical-lr;
+        transform: rotate(180deg);
+        margin: 20px;
+        font-size: 2rem;
+        font-weight: bold;
+        color: #333;
+        white-space: nowrap;
+        overflow: visible;
+    }
+</style>

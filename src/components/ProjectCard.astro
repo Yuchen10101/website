@@ -12,7 +12,6 @@ const allPosts = await Astro.glob('../pages/projects/*.md');
 		<ProjectElement url={post.url} title={post.frontmatter.title} 
 		imageSrc={post.frontmatter.image.url} description={post.frontmatter.description} />)}
 	</ol>
-    <div class="vertical-title">{title}</div>
 </div>
 
 <style>
@@ -36,7 +35,7 @@ const allPosts = await Astro.glob('../pages/projects/*.md');
 .vertical-title {
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     writing-mode: vertical-lr;
     transform: rotate(180deg);
     margin: 20px;
@@ -48,7 +47,7 @@ const allPosts = await Astro.glob('../pages/projects/*.md');
 .project-list {
     list-style: none;
     padding: 0;
-    margin: 20px;
+    margin: 25px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
     grid-gap: 20px;

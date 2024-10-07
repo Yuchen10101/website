@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SelfIntroCard from '../components/SelfIntroCard.astro';
 import PhotoCard from '../components/PhotoCard.astro';
 import ResearchCard from '../components/ResearchCard.astro';
+import ExperienceCard from '../components/ExperienceCard.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 const pageTitle = "Yuchen Yang 杨雨晨 💬";
 ---
@@ -12,25 +13,35 @@ const pageTitle = "Yuchen Yang 杨雨晨 💬";
         <PhotoCard />
     </div>
     <ResearchCard />
+    <ExperienceCard />
     <ProjectCard />
 </BaseLayout>
 
 <style>
 .card-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
-	width: 80%; 
+    width: 80%; 
     max-width: 1600px;
 }
 
 .card {
-    margin-right: 20px; /* 为每个卡片添加右侧外边距 */
+    flex: 1 1 400px;
+    margin-right: 20px;
 }
 
 .card:last-child {
-    margin-right: 0; /* 最后一个卡片不需要右侧外边距 */
+    margin-right: 0;
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex-basis: 100%;
+        margin-right: 0;
+    }
 }
 </style>
