@@ -239,19 +239,14 @@ We constructed a prototype for continuity and jump force testing (Figure 5.1.1).
 </div>
 
 ### 5.2 Prototype Test
-The continuity test demonstrated that the leg's motion trajectory meets our expectations, achieving continuous motion. However, the jump force test did not yield the desired results, with the robot failing to jump. We attribute this to: (1) the high density of 3D printing materials, resulting in a heavier overall weight; (2) the torsion spring's insufficient torque for jumping; (3) the "cantilever beam" issue due to one-end fixation of the shaft, causing leg skew and suboptimal torsion spring performance; (4) poor synchronization.
+The continuity test demonstrated that the leg's motion trajectory meets our expectations, achieving continuous motion. However, the jump force test did not yield the desired results, with the robot failing to jump. We attribute this to: (1) the high density of 3D printing materials, resulting in a heavier overall weight; (2) the torsion spring's insufficient torque for jumping; (3) the "cantilever beam" issue due to one-end fixation of the shaft, causing leg skew and suboptimal torsion spring performance.
 <div style="text-align: center; margin: 20px 0;">
     <video id="CamVideo" controls muted width="560" class="hover-img">
         <source src="/website/P4_Movie_521.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
-<div style="text-align: center; margin: 20px 0;">
-    <video id="CamVideo" controls muted width="560" class="hover-img">
-        <source src="/website/P4_Movie_522.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
+
 
 <style>
     .hover-img {

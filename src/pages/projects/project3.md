@@ -1,15 +1,15 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: 'A Self-Designed 6-DoF Robot Arm with Kinematics&Dynamics Functions Realization'
-description: 'Designed a self-designed 6-DoF robot arm, where a series of kinematics&dynamics analysis and functions are realized.'
+description: 'Designed a self-designed 6-DoF robotic arm, where a series of kinematics&dynamics analysis and functions are realized.'
 team: 'Yuchen Yang(Leader), Yuxuan Chen, Qihong Hu, Zhouyi Lin and Xiaoyang Jia'
 supervisor: 'Prof. Zhenhua Xiong, Dr. Jianhu Wu'
 image:
     url: '/website/Project3.gif'
-    alt: ' RRT of Robot arm.'
+    alt: ' RRT of Robotic arm.'
 ---
 
-This is a course project of ***ME3403-Robotics*** guided by Prof. [Zhenhua Xiong](https://me.sjtu.edu.cn/teacher_directory1/xiongzhenhua.html) and Dr. [Jianhua Wu](https://me.sjtu.edu.cn/teacher_directory1/wujianhua.html). We designed a 6-DoF robot arm, based on which we carried out **component selection**, **kinematics analysis**, **accuracy analysis**, **kinematics & dynamics simulation** and other **complicated functions**.
+This is a course project of ***ME3403-Robotics*** guided by Prof. [Zhenhua Xiong](https://me.sjtu.edu.cn/teacher_directory1/xiongzhenhua.html) and Dr. [Jianhua Wu](https://me.sjtu.edu.cn/teacher_directory1/wujianhua.html). We designed a 6-DoF robotic arm, based on which we carried out **component selection**, **kinematics analysis**, **accuracy analysis**, **kinematics & dynamics simulation** and other **complicated functions**.
 The code is available on [GitHub](https://github.com/Yuchen10101/robotics-project/).
 <br>
 <br>
@@ -18,13 +18,13 @@ The code is available on [GitHub](https://github.com/Yuchen10101/robotics-projec
 <span class="highlight"><em>Contributor: Zhouyi Lin</em></span>
 
 ### 1.1 Component Introduction
-With reference to the [JAKA Zu7](https://www.jaka.com/productDetails/JAKA_Zu_7) structure, we designed a 6-DoF robot arm with an arm span of 0.8m (Figure 1.1). For simplicity and versatility, there are mainly four kinds of mechanical parts: three joints near the base called Base_Joint, three joints near the tool end called End_Joint, two linked arms called Straight_Arm and Curved_Arm.
+With reference to the [JAKA Zu7](https://www.jaka.com/productDetails/JAKA_Zu_7) structure, we designed a 6-DoF robotic arm with an arm span of 0.8m (Figure 1.1). For simplicity and versatility, there are mainly four kinds of mechanical parts: three joints near the base called Base_Joint, three joints near the tool end called End_Joint, two linked arms called Straight_Arm and Curved_Arm.
 
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 55%; vertical-align: top;">
         <img src="/website/P3_Figure_111.png" alt="Desk Grasp" style="width: 100%;" class="hover-img"/>
         <p style="text-align: center;">
-            <strong>Figure 1.1.1: Robot Arm and its Main Components</strong>
+            <strong>Figure 1.1.1: Robotic Arm and its Main Components</strong>
         </p>
     </div>
 </div>
@@ -44,7 +44,7 @@ With reference to the [JAKA Zu7](https://www.jaka.com/productDetails/JAKA_Zu_7) 
 
 **Torque analysis in extreme working conditions**:
 
-In the most demanding scenario for the Base_Joint, the robot arm is subjected to a 7 kg load (our predefined maximum) while fully extended horizontally. This position induces the highest mechanical moment across the arm, peaking at the second Joint. For this analysis, we focus on the forces and moments within the vertical plane, simplifying the three-dimensional robot arm to a two-dimensional model.
+In the most demanding scenario for the Base_Joint, the robotic arm is subjected to a 7 kg load (our predefined maximum) while fully extended horizontally. This position induces the highest mechanical moment across the arm, peaking at the second Joint. For this analysis, we focus on the forces and moments within the vertical plane, simplifying the three-dimensional robotic arm to a two-dimensional model.
 
 We've assigned 7075 aluminum to the arm, calculating the mass of each component as follows: Base_Joint at 0.514 kg, End_Joint at 0.331 kg, Straight_Arm at 0.613 kg, and Curved_Arm at 0.704 kg. It's assumed that each component's mass is evenly distributed, with joint masses concentrated at the origin of their respective coordinate systems. Accounting for an acceleration due to gravity of 9.8 m/s², the calculated torque exerted on the Base_Joint by the shell and load is 66.2264 N·m.
 
@@ -54,7 +54,7 @@ Following a similar analysis for the End_Joint, we've determined the correspondi
 
 **Reduction Ratio**:
 
-The motor's rated speed is typically 3000 RPM, while the robot arm joint operates at 30 RPM. With a deceleration ratio (i) of at least 100, and considering the harmonic reducer's efficiency of 0.85, a reduction ratio of at least 117.65 is needed. Therefore, we round this ratio to 120 for practical application.
+The motor's rated speed is typically 3000 RPM, while the robotic arm joint operates at 30 RPM. With a deceleration ratio (i) of at least 100, and considering the harmonic reducer's efficiency of 0.85, a reduction ratio of at least 117.65 is needed. Therefore, we round this ratio to 120 for practical application.
 
 ### 2.2 Selections
 According to the above parameters and through market research, we locked [Harmonic](https://www.harmonicinc.com/) CSG series harmonic reducer(Table 2.2.1), [Inovance](https://www.inovance.eu/home) MS1-R series servo motor(Table 2.2.1) and [Sunrise Instruments (SRI)](https://www.srisensor.com/) M221X series torque sensor(Table 2.2.3). The final parameter summary is shown in Table 2.2.4.
@@ -100,7 +100,7 @@ According to the above parameters and through market research, we locked [Harmon
 
 ### 3.1 Denavit–Hartenberg Parameters
 
-We established the Denavit-Hartenberg (DH) coordinate system and parameters for the robot arm, as shown in Figure 3.1.1(a) and Table 3.1.1. To simplify the kinematics derivation, we created a set of simplified DH parameters, depicted in Figure 3.1.1(b) and Table 3.1.2. This simplification led to d3 being zero, which in turn made our kinematics equations more concise. Note that these simplified parameters are exclusively used for deriving kinematic formulas; the original parameters are retained for all other purposes. The kinematic equivalence between the simplified and original DH parameters is verified by [DH_verify.m](https://github.com/Yuchen10101/robotics-project/blob/main/Kinematics/DH_verify.m).
+We established the Denavit-Hartenberg (DH) coordinate system and parameters for the robotic arm, as shown in Figure 3.1.1(a) and Table 3.1.1. To simplify the kinematics derivation, we created a set of simplified DH parameters, depicted in Figure 3.1.1(b) and Table 3.1.2. This simplification led to d3 being zero, which in turn made our kinematics equations more concise. Note that these simplified parameters are exclusively used for deriving kinematic formulas; the original parameters are retained for all other purposes. The kinematic equivalence between the simplified and original DH parameters is verified by [DH_verify.m](https://github.com/Yuchen10101/robotics-project/blob/main/Kinematics/DH_verify.m).
 
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 28%; vertical-align: top;">
@@ -626,8 +626,8 @@ $$
 <p>
 Taking the fourth link for example, which is simplified into a cylindrical shell with a length of 0.2945m, a diameter of 6cm and a thickness of 0.5cm. Aluminum alloy is selected as the material, and the elastic modulus is found to be 75GPa. <br>
 Then we can get the moment of inertia: \(I = \frac{\pi(d_1^4-d_2^4)}{64}=3.29\cdot 10^{-7}m^4\).<br>
-The force on the robot arm is simplified to a force \(F_0\) along the link and a moment \(M_0\) acting on the joint. According to the dynamic analysis, \(F_0=30N\), \(M_0=20 N\cdot m\).
-Then the robot arm contracts:\(\Delta l = \frac{\sigma }{E}l = \frac{4Fl}{\pi E(d_1^2-d_2^2)} = 1.36\cdot10^{-4} mm\)<br>
+The force on the robotic arm is simplified to a force \(F_0\) along the link and a moment \(M_0\) acting on the joint. According to the dynamic analysis, \(F_0=30N\), \(M_0=20 N\cdot m\).
+Then the robotic arm contracts:\(\Delta l = \frac{\sigma }{E}l = \frac{4Fl}{\pi E(d_1^2-d_2^2)} = 1.36\cdot10^{-4} mm\)<br>
 The deflection angle of the link end:\(\Delta \theta = -\frac{MI}{2EI} = 0.0139^o = 1.19\cdot10^{-4}rad\)<br>
 For the fourth link, the length corresponds to \(a_3\) in the DH parameters, and the deflection angle should be included in the previous joint, so we get the error: \(\Delta a_3 = 1.36\cdot10^{-4}mm\),\(\Delta \theta_3 = 1.19\cdot10^{-4}rad\)<br>
 Similar analysis was made for the other 5 links, and finally we get:<br>
@@ -668,7 +668,7 @@ This function is realized in [workspace_process.m] and [workspace_quick_solution
 
 ### 5.2 RRT obstacle-avoided Path Planning
 The Rapidly-exploring Random Tree (RRT) algorithm is a probabilistic method for path planning in robotics and autonomous navigation. The algorithm operates by initiating a tree structure with the starting point as its root. It then iteratively improves the tree by extending it towards free space through Random sampling, checking for collisions with obstacles along the way.<br>
-When applying RRT to robot arm obstacle avoidance, the algorithm extends the tree by adding new nodes that represent potential motion increments. Each new node is evaluated for collisions with the environment;  if a node does not collide with any obstacles, it is retained and can serve as the base for further extensions.  This process continues until a node is added that connects the tree to the target point, at which point a path from the start to the target has been found.<br>
+When applying RRT to robotic arm obstacle avoidance, the algorithm extends the tree by adding new nodes that represent potential motion increments. Each new node is evaluated for collisions with the environment;  if a node does not collide with any obstacles, it is retained and can serve as the base for further extensions.  This process continues until a node is added that connects the tree to the target point, at which point a path from the start to the target has been found.<br>
 Once a path from the start to the target is identified, it is typically a series of discrete points. To create a smooth trajectory from these points, techniques like quintic spline interpolation are applied to ensure continuity and differentiability.<br>
 The videos below show RRT results (orange for final path, yellow for explored but failed path).The joints' displacement, velocity and acceleration of final path are shown in Figure 5.2.1.
 
