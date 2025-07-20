@@ -1,162 +1,275 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: 'Solve Long-horizon Stacking Task with Demonstration-based Deep Reinforcement Learning (In Progress)'
-description: 'Solved complex, long-horizon stacking task of dual-arm robot using demonstration-based deep reinforcement learning.'
+title: 'A Vegetable Peeling Task for Contact-rich Manipulation'
+description: 'Developed a contact-rich vegetable peeling solution on a humanoid dual-arm robot using CNN-based and Mamba-based diffusion policies, jointly modeling action trajectories and target contact forces from multimodal observations.'
 team: 'Yuchen Yang'
-supervisor: 'Prof. Xinjun Sheng, Dr. Cheng Ding (JAKA Engineer)'
+supervisor: 'Prof. Xinjun Sheng, Prof. Yang Yu'
 image:
     url: '/website/Project1.gif'
-    alt: 'Stacking Task.'
+    alt: 'Peeling Task.'
 ---
 
-Stacking task, as one significant step in industrial production line, its requirements for diversity and precision pose new challenges to automation. The flexibility, mobility, and intelligence of humanoid robots bring new possibilities to such industrial applications, for which stacking task involves complex manipulation with long horizon.
+Contact-rich manipulation represents a class of complex robotic interaction tasks where precise control is achieved through physical contact with the environment. Among these tasks, vegetable peeling stands out as a representative and practical example, combining high-level manipulation challenges with real-world applicability. It serves as an ideal testbed for exploring robotic strategies that rely heavily on force interaction and compliance.
 
-## 1. Problem Description
-### 1.1 Task Analysis
-**Objective**: The objective is to have a dual-arm humanoid robot place all workpieces into their corresponding stacking areas, where the workpieces and stacking areas are randomly generated with random sizes, quantities, positions, and combinations.
+While vision-based approaches have been widely adopted, their limitations in contact-rich tasks have led to growing interest in multi-modal sensing, particularly the integration of force and tactile feedback. By incorporating force information, robots can significantly enhance stability, adaptability, and success rates when dealing with tasks involving uncertain dynamics and fine surface interactions.
 
-**Challenge Analysis**: The stacking task is a combination of *pick and place* subtasks, essentially a long-horizon task. The challenges include: 
-1) The quantity, position, and size of workpieces vary in each scenario, requiring a high level of generalization. 
-2) For workpieces of the same shape, how to choose the corresponding stacking area? For example, in Figure 1.1.1, workpieces a, b, and c can be placed in any of the areas A, B, or C. How can we find the optimal placement method in such cases? This involves the clever design of the reward function.
-<div style="text-align: center;">
-    <div style="display: inline-block; text-align: center; width: 50%; vertical-align: top;">
-        <img src="/website/P1_Figure_111.png" alt="Stacking Task" style="width: 100%;" class="hover-img"/>
-        <p style="text-align: center;">
-            <strong>
-            Figure 1.1.1: Stacking Task Example
-            </strong>
-        </p>
-    </div>
-</div>
+This project focuses on the vegetable peeling task and proposes a complete research framework spanning multi-modal data acquisition, policy learning, control execution, and performance evaluation. Specifically, we:
 
-**Technical Approach**: A demonstration-based deep reinforcement learning method with the overall framework are shown in Figure 1.1.2.
-<div style="text-align: center;">
-    <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
-        <img src="/website/P1_Figure_112.png" alt="Deep Reinforcement Learning" style="width: 100%;" class="hover-img"/>
-        <p style="text-align: center;">
-            <strong>
-            Figure 1.1.2: Deep Reinforcement Learning Framework
-            </strong>
-        </p>
-    </div>
-</div>
+- Designed a VR-based multi-modal data collection system and built a task dataset combining visual and force signals;
 
-## 2. Demonstrations Collection
-Over 30 demonstrations of stacking task are collected, with the stack diversity and randomness well considered. The MuJoCo simulation environment and demonstrations collection pipeline are illustrated in [another post](../project2). Click for more information.
+- Developed CNN-based and Mamba-based diffusion policy learning models that fuse visual and force information;
 
-## 3. Reward Function Explained
-The reward function comprises distance rewards, rotation penalties, keyframe additional rewards, and drop penalties.
-### 3.1 Relation Matrix
-To address the correspondence between workpieces and stacking areas in the task scenario, a *relation_matrix* is established, a two-dimensional array with the following calculation:
+- Designed compliant and adaptive control strategies;
 
-1. **Initialization**:
-   <p>
-   At initialization, <i>relation_matrix</i> is set to a zero matrix. Then, for each workpiece and stacking area, if their sizes match, the corresponding <i>relation_matrix</i> element is set to 1:
-    $$
-    \text{relation_matrix}[i, j] = 
-    \begin{cases} 
-    1 & \text{if } \text{cube_size}[i][:2] \approx \text{area_size}[j][:2] \\
-    0 & \text{otherwise}
-    \end{cases}
-    $$
-   </p>
+- Conducted comprehensive experiments to evaluate and compare model performance.
 
-2. **Update**:
-   <p>
-    When a workpiece is detected to be placed in a stacking area, all relation values in <i>relation_matrix</i> related to that workpiece or stacking area are set to 0:
-   $$
-   \begin{aligned}
-   \text{if workpiece} & \, i \, \text{is placed in area} \, j \, \text{then:} \\
-   &\text{relation_matrix}[i, :] = 0 \\
-   &\text{relation_matrix}[:, j] = 0 \\
-   &\text{relation_matrix}[i, j] = 1 \\
-   \end{aligned}
-   $$
-   </p>
-   <p>
-   To simplify the expression, the <i>associated_areas</i> is defined, which includes all stacking areas associated with the \(i\) -th workpiece, determined by <i>relation_matrix</i>:
-   </p>
-   <p>
-   $$
-   \text{associated_areas}[i] = \{ j \mid \text{relation_matrix}[i, j] = 1 \}
-   $$
-   </p>
-
-### 3.2 Distance Reward
-<p>
-For a workpiece, let the distance to a corresponding stacking area be <i>distance</i>. The distance reward is:
-$$
-\text{distance_reward}(\text{workpiece}[i],\text{stacking_area}[j]) = \frac{1}{\text{distance}_{i,j} + 0.1}
-$$
-The total distance reward for a workpiece is the sum of the distance rewards with all corresponding stacking areas:
-$$
-\text{distance_reward}[i] = \sum_{j \in \text{associated_areas}[i]} \frac{1}{\text{distance}_{i,j} + 0.1}
-$$
-</p>
-
-### 3.3 Rotation Penalty
-<p>
-For each workpiece, let the average distance to the related stacking area be <i>mean_distance</i>. If it is less than a certain threshold, the rotation penalty is considered. This is because, during operation, the rotation posture of the workpiece does not need to be considered if it is far from the placement area. If the average distance is small enough, the difference in rotation from the initial direction <i>rotation_diff</i> is calculated, and then the rotation penalty is calculated based on the rotation difference:
-$$
-\text{rotation_penalty}[i] = 
-\begin{cases} 
-0 & \text{if } \text{mean_distance}_{i} > 0.1 \\
-- \frac{\text{rotation_diff}_{i} / \pi}{0.1 + \text{mean_distance}_{i}} & \text{otherwise}
-\end{cases}
-$$
-</p>
-
-### 3.4 Keyframe Detection and Extra Bonus
-
-Keyframe detection includes pick keyframe and place keyframe.
-<p>
-1. <b>Pick Keyframe</b>:
-   A queue of length 4 records the latest four heights of the workpiece. If the height changes continuously three times by more than +0.001, and the difference between the first recorded height and the rest height is less than 0.02, a pick keyframe is detected:
-   $$
-   \begin{aligned}
-   \text{if }&\left|\text{cube_z_history}[cube][0]-\text{cube_rest_height}\right|< 0.02:\\
-   \text{if }&\left(\forall\text{index}\in\text{cube_z_history}[cube], \text{cube_z_history}[cube][index+1]-\text{cube_z_history}[cube][index]>0.001\right):\\
-   &\text{is_pick_keyframe} = \text{True}
-   \end{aligned}
-   $$
-</p>
-
-<p>
-2. <b>Place Keyframe</b>:
-   If the workpiece's position is close to the corresponding stacking area's position in the x and y axes, and the height is close to the rest height, a place keyframe is detected:
-   $$
-   \begin{aligned}
-   \text{if } &\left( \text{cube_pose[:2]} \approx \text{area_pose[:2]} \right) \text{ and } \left( \text{cube_pose[2]} \approx \text{cube_rest_height} \right): \\
-   &\text{is_place_keyframe} = \text{True}
-   \end{aligned}
-   $$
-</p>
-<p>
-For the extra bonus, if a cube drops, it decreases by 50; if a pick keyframe is detected, it increases by 5; if a place keyframe is detected, the extra reward increases by 15:
-$$
-\text{extra_bonus } = 5\times\text{is_pick_frame} + 15\times\text{is_place_frame} - 50\times\text{is_dropped}
-$$
-</p>
-
-### 3.5 Comprehensive Reward Function
-<p>
-Combining all the above parts, the formula for the comprehensive reward function is as follows:
-$$
-\begin{aligned}
-\text{reward_all} &= \sum_{i} \text{omega}[i] \times (\text{distance_reward}[i] + \text{rotation_penalty}[i]) + \text{extra_bonus} \\
-&= \sum_{i} \text{omega}[i] \times \left( \sum_{j \in \text{associated_areas}[i]} \frac{1}{ \text{distance}_{i,j} + 0.1} - \frac{\text{rotation_diff}_{i} / \pi}{0.1 + \text{mean_distance}_{i}}\right) + 5\times\text{is_pick_frame} + 15\times\text{is_place_frame} - 50\times\text{is_dropped}
-\end{aligned}
-$$
-</p>
-
-### 3.6 Validity Verification of Reward Function
-Based on joint motion data collected from a demonstration, reconstructed in MuJoCo simulation environment, the following video shows the total reward, workpiece position, and workpiece rotation changing with the stacking operation, which is in line with expectations.
+A demonstration video of the final result is below.
 <div style="text-align: center; margin: 20px 0;">
-    <video id="WS2" controls muted width="900" class="hover-img">
-        <source src="/website/P1_Movie_361.mp4" type="video/mp4">
+    <video id="Demo" controls muted style="width: 70%; max-width: 960px;" class="hover-img">
+        <source src="/website/P1_Movie_01.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
 
-## 4. Policy Model
-Waiting...
+## 1. Design of a VR Teleoperation Data Collection System and Dataset Construction
+### 1.1 Experimental Platform
+As the core carrier of data acquisition, the experimental platform has perfect multimodal perception functions and can fully support the realization of complex operation tasks. The key module composition of the experimental platform is shown in Figure 1.1.
+<div style="text-align: center;">
+    <div style="display: inline-block; text-align: center; width: 70%; vertical-align: top;">
+        <img src="/website/P1_Figure_11.png" alt="Experimental Platform" style="width: 100%;" class="hover-img" />
+    </div>
+    <p style="text-align: center;">
+        <strong>Figure 1.1: Experimental Platform</strong> <br>
+    </p>
+</div>
+
+### 1.2 VR Teleoperation System
+The overall architecture of the VR teleoperation system is shown in Fig 1.2, and the system consists of four main parts: the VR, the camera, the PC and the robot.
+The VR glasses receive images from the head camera and render them on the scene canvas in real time to provide an immersive visual experience, and the VR handle is responsible for releasing the key and pose information. The keys include the start button, the stop button and the grasp button. The real-time pose change information of the VR handle is converted into the expected pose of the robot end effector through mapping to realize the teleoperation control.
+The final saved data include RGB images and depth images from the three cameras (collected at 10 Hz), low-frequency data from the dual-arm robot (collected at 6 Hz), and high-frequency data (collected at 60 Hz). The low-frequency data contains the robot's end pose, joint angle, and gripper state, and the high-frequency data contains the robot's end force and moment, end pose, and joint angle.
+<div style="text-align: center;">
+    <div style="display: inline-block; text-align: center; width: 70%; vertical-align: top;">
+        <img src="/website/P1_Figure_12.png" alt="VR System" style="width: 100%;" class="hover-img" />
+    </div>
+    <p style="text-align: center;">
+        <strong>Figure 1.2: VR System</strong> <br>
+    </p>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+    <video id="VR" controls muted style="width: 70%; max-width: 960px;" class="hover-img">
+        <source src="/website/P1_Movie_11.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <video id="VR_Cam" controls muted style="width: 70%; max-width: 960px;" class="hover-img">
+        <source src="/website/P1_Movie_12.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+### 1.3 Dataset Construction
+Based on the VR teleoperated system, data acquisition was performed for the vegetable peeling task of zucchini, and a dataset containing 100 pieces of high-quality peeling data was created.
+The architecture of the raw dataset is shown in Figure 1.3. The image data includes color images and depth images (collected at 30Hz). The low-frequency data included the pose of robot end effector, the angle of each joint, and the the gripper state (collected at 6 Hz). High-frequency data includes force sensor data, robot end effector pose, and the angle of each joint (collected at 60Hz).
+<div style="text-align: center;">
+    <div style="display: inline-block; text-align: center; width: 70%; vertical-align: top;">
+        <img src="/website/P1_Figure_13.png" alt="Raw Dataset" style="width: 100%;" class="hover-img"/>
+    </div>
+    <p style="text-align: center;">
+        <strong>Figure 1.3: Raw Dateset Structure</strong> <br>
+    </p>
+</div>
+For subsequent model training, point cloud reconstruction was performed based on the RGB images and depth images collected from cameras. The overall process is shown in Figure 1.4.
+<div style="text-align: center;">
+    <div style="display: inline-block; text-align: center; width: 50%; vertical-align: top;">
+        <img src="/website/P1_Figure_14.jpg" alt="PCD" style="width: 100%;" class="hover-img"/>
+    </div>
+    <p style="text-align: center;">
+        <strong>Figure 1.4: Point Cloud Reconstruction Process</strong> <br>
+    </p>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+    <video id="PCD" controls muted style="width: 50%; max-width: 960px;" class="hover-img">
+        <source src="/website/P1_Movie_13.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+The data is organized into a HDF5 file in [robomimic](https://robomimic.github.io/) format and the overall architecture is shown in Figure 1.5.
+
+<div style="text-align: center;">
+    <div style="display: inline-block; text-align: center; width: 30%; vertical-align: top;">
+        <img src="/website/P1_Figure_15.png" alt="HDF5" style="width: 100%;" class="hover-img"/>
+    </div>
+    <p style="text-align: center;">
+        <strong>Figure 1.5: HDF5 Dataset Structure</strong> <br>
+    </p>
+</div>
+
+## 2. Development and Training of Diffusion Policy Models
+This study employed the CNN-based Diffusion Policy and the Mamba-based Diffusion Policy (subsequently referred to as Diffusion-C and Diffusion-M), and the overall model architecture is shown in Figure 2.1. Two models were trained separately, with a batch size of 32 and an epoch number of 1000. Finally, the model generated after 800 epochs was selected for testing.
+<div style="text-align: center;">
+    <div style="display: inline-block; text-align: center; width: 90%; vertical-align: top;">
+        <img src="/website/P1_Figure_21.png" alt="Model" style="width: 100%;" class="hover-img"/>
+    </div>
+    <p style="text-align: center;">
+        <strong>
+        Figure 2.1: Model Architecture (Adapted from 
+        <a href="https://diffusion-policy.cs.columbia.edu/" target="_blank">Diffusion Policy</a> and 
+        <a href="https://andycao1125.github.io/mamba_policy/" target="_blank">Mamba Policy</a>)
+        </strong> <br>
+    </p>
+</div>
+ 
+## 3. Task Execution and Performance Evaluation on Vegetable Peeling
+### 3.1 Compliant Adjustment Strategy
+We design a compliant adjustment strategy that organically combines the pose parameters and force/torque parameters output from the model to achieve better control. The core idea is to adjust the desired pose of the robot in real time to reduce the error between the actual force/torque and the expected force/torque. The overall flow is shown in Figure 3.1.
+<div style="text-align: center;">
+    <div style="display: inline-block; text-align: center; width: 70%; vertical-align: top;">
+        <img src="/website/P1_Figure_31.png" alt="Control" style="width: 100%;" class="hover-img"/>
+    </div>
+    <p style="text-align: center;">
+        <strong>
+        Figure 3.1: Compliant Adaption Flow
+        </strong> <br>
+    </p>
+</div>
+
+Comparison experiments of force following with or without the strategy were conducted for the Diffusion-C and Diffusion-M models, respectively, focusing on examining the actual force/torque following the expected force/torque after using the compliant adjustment strategy (Figure 3.2, Figure 3.3). In the figures, the curves labeled “1” represent the results without the compliant adjustment strategy, while the curves labeled “2” represent the results with the compliant control strategy.
+<div style="text-align: center;">
+    <div style="display: inline-block; text-align: center; width: 50%; vertical-align: top;">
+        <img src="/website/P1_Figure_32.jpg" alt="Force Comparison C" style="width: 100%;" class="hover-img"/>
+    </div>
+    <p style="text-align: center;">
+        <strong>
+        Figure 3.2: Comparison of Force/Torque Curves for Diffusion-C with and Without Compliant Adjustment Strategy
+        </strong> <br>
+    </p>
+</div>
+<div style="text-align: center;">
+    <div style="display: inline-block; text-align: center; width: 50%; vertical-align: top;">
+        <img src="/website/P1_Figure_33.jpg" alt="Force Comparison M" style="width: 100%;" class="hover-img"/>
+    </div>
+    <p style="text-align: center;">
+        <strong>
+        Figure 3.3: Comparison of Force/Torque Curves for Diffusion-M with and Without Compliant Adjustment Strategy
+        </strong> <br>
+    </p>
+</div>
+
+### 3.2 Model Performance Evaluation and Comparison
+The following four quantitative indicators were designed:
+- Success Rate: the ratio of the number of successful peeling tasks performed to the total number of tasks performed.
+- Peeling Length: the mean and standard deviation of the statistical peeling length in successfully completed peeling tasks.
+- Total Movement Efficiency: the mean and standard deviation of 100 time points divided by the total time points of the positioning and peeling phases were counted. The expression is:
+<p>
+$$
+\begin{aligned}
+    \text{motion_efficiency} &= \frac{100}{\text{time_step_total}}\\
+    \text{time_step_total} &= \frac{t_{\text{locate}}+t_{\text{peel}}}{t_{\text{send}}+t_{\text{inference}}+t_{\text{move}}}
+\end{aligned}
+$$
+</p>
+
+- Peeling Efficiency: the peeling length is divided by the time points of the peeling phase, i.e. the peeling length per unit time step, and its mean and standard deviation are counted. The expression is:
+<p>
+$$
+\begin{aligned}
+    \text{peeling_efficiency} &= \frac{\text{length}}{\text{time_step_peel}}\\
+    \text{time_step_peel} &= \frac{t_{\text{peel}}}{t_{\text{send}}+t_{\text{inference}}+t_{\text{move}}}
+\end{aligned}
+$$
+</p>
+<div style="text-align: center;">
+    <div style="display: inline-block; text-align: center; width: 70%; vertical-align: top;">
+        <img src="/website/P1_Figure_34.png" alt="Stage" style="width: 100%;" class="hover-img"/>
+    </div>
+    <p style="text-align: center;">
+        <strong>
+        Figure 3.4: Peeling Task Stage Division
+        </strong> <br>
+    </p>
+</div>
+
+In order to fully evaluate the performance of the Diffusion-C and Diffusion-M models with and without the compliant adjustment strategy, we performed 32 peeling inference tasks for each of the four model combinations. Figure 3.5 illustrates a visual record of some of the test results.
+<div style="text-align: center;">
+    <div style="display: inline-block; text-align: center; width: 80%; vertical-align: top;">
+        <img src="/website/P1_Figure_35.png" alt="Record" style="width: 100%;" class="hover-img"/>
+    </div>
+    <p style="text-align: center;">
+        <strong>
+        Figure 3.5: Partial Peeling Test Results Record
+        </strong> <br>
+    </p>
+</div>
+
+Table 3.1 demonstrates the statistics of the four quantitative indicators. Figures 3.6, 3.7 and 3.8 show the distribution of peeling length, total motion efficiency and peeling efficiency respectively.
+
+<div style="text-align: center;">
+    <p style="text-align: center;">
+        <strong>
+        Table 3.1: Comparison of Quantitative Indicators
+        </strong>
+    </p>
+    <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
+        <img src="/website/P1_Table_31.png" alt="Indicators" style="width: 100%;" class="hover-img"/>
+    </div>
+</div>
+
+<div style="text-align: center;">
+    <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
+        <img src="/website/P1_Figure_36.png" alt="Length" style="width: 100%;" class="hover-img"/>
+    </div>
+    <p style="text-align: center;">
+        <strong>
+        Figure 3.6: Distribution of Peeling Length
+        </strong> <br>
+    </p>
+</div>
+
+<div style="text-align: center;">
+    <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
+        <img src="/website/P1_Figure_37.png" alt="Motion Efficiency" style="width: 100%;" class="hover-img"/>
+    </div>
+    <p style="text-align: center;">
+        <strong>
+        Figure 3.7: Distribution of Total Motion Efficiency
+        </strong> <br>
+    </p>
+</div>
+
+<div style="text-align: center;">
+    <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
+        <img src="/website/P1_Figure_38.png" alt="Peeling Efficiency" style="width: 100%;" class="hover-img"/>
+    </div>
+    <p style="text-align: center;">
+        <strong>
+        Figure 3.8: Distribution of Peeling Efficiency
+        </strong> <br>
+    </p>
+</div>
+
+From the comparison, we draw the following conclusions:
+- Diffusion-C demonstrates more stable performance, while Diffusion-M yields more visually impressive results but suffers from reduced consistency.
+- Compliant adjustment significantly improves system stability, though it compromises the "brute-force" effects to some extent.
+- Diffusion-C is more time-efficient overall.
+- Diffusion-C produces more conservative position outputs, where incorporating force prediction helps accelerate the peeling process; in contrast, Diffusion-M generates more aggressive motions, and force prediction helps slow down the process and enhance stability.
+
+<style>
+    .hover-img {
+        transition: transform 0.3s ease-in-out;
+    }
+    .hover-img:hover {
+        transform: translateY(-5px);
+    }
+    h2 {
+        font-size: 1.6em;
+        color: #333;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    h3 {
+        font-size: 1.3em;
+        color: #333;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+</style>

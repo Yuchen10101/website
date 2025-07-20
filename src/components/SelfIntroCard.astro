@@ -6,18 +6,20 @@ const title = "About Me";
     <div class="content">
         <h2>{title}</h2>
         <p>
-            Hi there! I am a senior at the 
-            <a href= "https://me.sjtu.edu.cn/en/"> School of Mechanical Engineering, Shanghai Jiao Tong University</a>, 
-            advised by Prof. 
-            <a href= "https://me.sjtu.edu.cn/en/FullTimeTeacher/shengxinjun.html">Xinjun Sheng</a>.
+            Hi there! I recently received my Bachelor's degree in Mechanical Engineering from 
+            <a href="https://me.sjtu.edu.cn/en/">Shanghai Jiao Tong University</a>, 
+            where I worked with Prof. 
+            <a href="https://me.sjtu.edu.cn/en/FullTimeTeacher/shengxinjun.html">Xinjun Sheng</a> 
+            on robot learning. I also had the opportunity to collaborate with Dr. 
+            <a href="https://lwdlab.sjtu.edu.cn/teachers/89.html">Binglei Zhao</a> 
+            on research in cognitive science and neuroimaging.
         </p>
         <p>
-            Previously, under the guidance of Dr.  
-            <a href= "https://lwdlab.sjtu.edu.cn/teachers/89.html">Binglei Zhao</a>, 
-            I had the honor of exploring the mysteries of human brain through cognitive science and neuroimaging.
+            Starting this fall, I will be pursuing my Master's degree in Mechanical Engineering at the 
+            <a href="https://www.me.washington.edu/">University of Washington</a>.
         </p>
         <p>
-            Right now, my research interests lie in dexterous manipulation and human-robot interaction. 
+            My research interests lie in human-robot interaction and multimodal information understanding.
         </p>
     </div>
 </div>
@@ -28,27 +30,41 @@ const title = "About Me";
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
-    width: 100%;
-    max-width: 600px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    width: 55%;
+    max-width: 700px;
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    max-height: 500px;
 }
 .intro-card:hover {
     transform: translateY(-5px);
 }
 
 .content {
-    padding: 50px;
+    padding: 3vw;
     text-align: left;
+    overflow-y: auto;
+    max-height: 100%;
+    width: 100%;
+    box-sizing: border-box;  
+}
+.content::-webkit-scrollbar {
+    width: 8px;
+}
+.content::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+.content::-webkit-scrollbar-track {
+    background-color: transparent;
 }
 
 h2 {
-    margin: 20px 0;
-    font-size: 2rem;
+    margin: 1.2em 0;
+    font-size: 1.8rem;
 }
 
 a {

@@ -27,10 +27,10 @@ const { company, href, imageSrc, location, department, position, duration } = As
         position: relative;
         display: flex;
         overflow: hidden;
-        width: 100%; 
+        width: 90%; 
         max-width: 1000px;
-        margin-left: 30px;
-        margin-right: auto;
+        margin-left: 20px;
+        margin-right: 80px;
         margin-top: 20px;
         margin-bottom: 20px;
         transition: transform 0.3s ease-in-out;
@@ -41,23 +41,21 @@ const { company, href, imageSrc, location, department, position, duration } = As
     }
 
     .image {
-        position: absolute;
-        left: 10px;
-        top: 0;
-        height: 100%;
+        flex: 0 0 15%;
+        max-width: 30%;
     }
 
     .image img {
-        height: 90%;
-        width: auto;
+        width: 100%;
+        height: auto;
         display: block;
+        border-radius: 8px;
     }
 
     .content {
-        padding: 20px;
+        flex: 1;
+        padding: 2vw;
         text-align: left; 
-        margin-left: 180px; 
-        margin-bottom: 30px;
     }
 
     .content a {

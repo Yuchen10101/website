@@ -43,28 +43,27 @@ const processedDescription = highlightDescription(description);
     }
 
     .image {
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
+        flex: 0 0 30%;
+        max-width: 30%;
     }
 
     .image img {
-        height: 100%;
-        width: auto;
+        width: 100%;
+        height: auto;
         display: block;
+        border-radius: 8px;
     }
 
     .content {
-        padding: 20px;
-        text-align: center;
-        margin-left: 260px;
-        margin-bottom: 20px;
+        flex: 1;
+        padding: 2vw;
+        text-align: left;
     }
 
     .content h2.title a {
         text-decoration: none;
         color: inherit;
+        font-size: 1.3rem;
     }
 
     .content h2.title a:hover {
@@ -72,16 +71,14 @@ const processedDescription = highlightDescription(description);
     }
 
     .content p {
-        margin: 0;
+        margin: 0.5em 0 0;
         font-size: 1rem;
         color: rgba(0,0,0,0.9);
     }
 
     .download-button {
-        position: absolute;
-        right: 20px;
-        bottom: 0px;
-        padding: 0px 0px;
+        margin-top: 1em;
+        padding: 0.5em 1em;
         background-color: #eeeeee;
         color: rgb(80, 80, 80);
         border: none;

@@ -17,26 +17,26 @@ This is a course project of [***ME3220-Design and Manufacture II***](https://me.
 <span class="highlight"><em>Contributor: Yuchen Yang, Zhenglei Li</em></span>
 
 ### 1.1 Comparison of Similar Robots
-Frogs, with their exceptional jumping and swimming capabilities, serve as excellent models for designing robots with similar functionalities. Our aim was to design a frog-like amphibious robot capable of both jumping and swimming, using a mechanism that is both efficient and adaptable. We began by investigating various existing biomimetic robots with jumping and swimming functions to identify potential design solutions (Table 1.1.1).
+Frogs, with their exceptional jumping and swimming capabilities, serve as excellent models for designing robots with similar functionalities. Our aim was to design a frog-like amphibious robot capable of both jumping and swimming, using a mechanism that is both efficient and adaptable. We began by investigating various existing biomimetic robots with jumping and swimming functions to identify potential design solutions (Table 1.1).
 
 <div style="text-align: center;">
     <p style="text-align: center;">
-        <strong>Table 1.1.1: Typical frog-like jumping/swimming robots</strong> <br>
+        <strong>Table 1.1: Typical frog-like jumping/swimming robots</strong> <br>
     </p>
     <div style="display: inline-block; text-align: center; width: 80%; vertical-align: top;">
-        <img src="/website/P4_Table_111.png" alt="Typical Robots" style="width: 100%;" class="hover-img" />
+        <img src="/website/P4_Table_11.png" alt="Typical Robots" style="width: 100%;" class="hover-img" />
     </div>
 </div>
 
 ### 1.2 Principle analysis
 
-We conducted a detailed analysis of the different stages of frog jumping and swimming (Table 1.2.1). The jumping mechanism in frogs involves a slow buildup of energy followed by a rapid release, whereas swimming is a more continuous motion. To replicate these behaviors, the robot's energy storage and release system needed to be both powerful and sustainable. Considering the above technical requirements, we choose the cam and torsion spring to realize the energy storage and release function.
+We conducted a detailed analysis of the different stages of frog jumping and swimming (Table 1.2). The jumping mechanism in frogs involves a slow buildup of energy followed by a rapid release, whereas swimming is a more continuous motion. To replicate these behaviors, the robot's energy storage and release system needed to be both powerful and sustainable. Considering the above technical requirements, we choose the cam and torsion spring to realize the energy storage and release function.
 <div style="text-align: center;">
     <p style="text-align: center;">
-        <strong>Table 1.2.1: Frog Jumping/Swimming Stage Analysis</strong> <br>
+        <strong>Table 1.2: Frog Jumping/Swimming Stage Analysis</strong> <br>
     </p>
     <div style="display: inline-block; text-align: center; width: 80%; vertical-align: top;">
-        <img src="/website/P4_Table_121.png" alt="Stage Analysis" style="width: 100%;" class="hover-img" />
+        <img src="/website/P4_Table_12.png" alt="Stage Analysis" style="width: 100%;" class="hover-img" />
     </div>
 </div>
 
@@ -44,22 +44,22 @@ We conducted a detailed analysis of the different stages of frog jumping and swi
 <span class="highlight"><em>Contributor: Yuchen Yang, Yiqin Ma</em></span>
 
 ### 2.1 Overall Architecture
-Using SolidWorks, we performed 3D modeling to design and assemble the various components. The overall architecture is outlined in Figure 2.1.1:<br>
+Using SolidWorks, we performed 3D modeling to design and assemble the various components. The overall architecture is outlined in Figure 2.1:<br>
 - **Torso**: Houses electronic control components and integrates various functional modules, considering size and biomimetic requirements.
 - **Forelimbs**: Equipped with torsion springs on the joints for posture maintenance, adjustment, and cushioning during the jumping process.
 - **Energy Storage and Hind Limbs Unit**: A key module for implementing jumping and swimming actions.
 - **Amphibious Mode Switching Unit**: A key module for switching between the jumping and swimming modes of the amphibious robot.
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 50%; vertical-align: top;">
-        <img src="/website/P4_Figure_211.png" alt="Architecture Overview" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P4_Figure_21.png" alt="Architecture Overview" style="width: 100%;" class="hover-img"/>
     </div>
     <p style="text-align: center;">
-        <strong>Figure 2.1.1: Architecture Overview </strong> <br>
+        <strong>Figure 2.1: Architecture Overview </strong> <br>
     </p>
 </div>
 
 ### 2.2 Torso and Forelimbs
-The key components of the torso and forelimbs unit are detailed in Figure 2.2.1:<br>
+The key components of the torso and forelimbs unit are detailed in Figure 2.2:<br>
 - **1 - Forelimb Joint**: Torsion springs are placed on the shaft, with ends fixed in the holes of the upper and lower limbs to maintain posture and provide cushioning during jumps.
 - **2 - Frog Head**: For biomimetic decoration and adjustment of the center of gravity.
 - **3 - Ventral Support Plate**: Houses and secures electronic control elements.
@@ -68,15 +68,15 @@ The key components of the torso and forelimbs unit are detailed in Figure 2.2.1:
 
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 45%; vertical-align: top;">
-        <img src="/website/P4_Figure_221.png" alt="Components of Torso and Forelimbs" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P4_Figure_22.png" alt="Components of Torso and Forelimbs" style="width: 100%;" class="hover-img"/>
     </div>
     <p style="text-align: center;">
-        <strong>Figure 2.2.1: Components of Torso and Forelimbs</strong> <br>
+        <strong>Figure 2.2: Components of Torso and Forelimbs</strong> <br>
     </p>
 </div>
 
 ### 2.3 Energy Storage and Hind Limbs
-The key components of the energy storage and hind limbs unit are shown in Figure 2.3.1:<br>
+The key components of the energy storage and hind limbs unit are shown in Figure 2.3:<br>
 - **1 - Motor**: Fixed to the side panel via the motor mount.
 - **2 - First Stage Gear**: Axial and circumferential fixation on the motor shaft is achieved through interference fit and a D-shaped hole.
 - **3 - Second Stage Gears and Cams**: Engage with the first stage gear, with a split washer for axial fixation on a grooved shaft.
@@ -86,30 +86,30 @@ The key components of the energy storage and hind limbs unit are shown in Figure
 - **7 - Lower Leg**: The lower hole allows for the torsion spring to pass through, connecting to the foot.
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
-        <img src="/website/P4_Figure_231.png" alt="Components of Energy Storage and Hind Limbs" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P4_Figure_23.png" alt="Components of Energy Storage and Hind Limbs" style="width: 100%;" class="hover-img"/>
     </div>
     <p style="text-align: center;">
-        <strong>Figure 2.3.1: Components of Energy Storage and Hind Limbs</strong> <br>
+        <strong>Figure 2.3: Components of Energy Storage and Hind Limbs</strong> <br>
     </p>
 </div>
-Figure 2.3.2 illustrates the principle of energy storage and release. The motor drives the first gear to rotate, which in turn drives the second gear and the cam. During the cam's rise, the leg retracts, and the torsion spring stores energy. During the fall, the leg extends quickly, releasing the energy for jumping or swimming.
+Figure 2.4 illustrates the principle of energy storage and release. The motor drives the first gear to rotate, which in turn drives the second gear and the cam. During the cam's rise, the leg retracts, and the torsion spring stores energy. During the fall, the leg extends quickly, releasing the energy for jumping or swimming.
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
-        <img src="/website/P4_Figure_232.png" alt="Principle of Energy Storage and Release" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P4_Figure_24.png" alt="Principle of Energy Storage and Release" style="width: 100%;" class="hover-img"/>
     </div>
     <p style="text-align: center;">
-        <strong>Figure 2.3.2: Principle of Energy Storage and Release</strong> <br>
+        <strong>Figure 2.4: Principle of Energy Storage and Release</strong> <br>
     </p>
 </div>
 <div style="text-align: center; margin: 20px 0;">
-    <video id="CamVideo" controls muted width="600" class="hover-img">
-        <source src="/website/P4_Movie_231.mp4" type="video/mp4">
+    <video id="CamVideo" controls muted style="width: 70%; max-width: 960px;" class="hover-img">
+        <source src="/website/P4_Movie_21.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
 
 ### 2.4 Amphibious Mode Switching 
-The key components of the amphibious mode switching unit are detailed in Figure 2.4.1:<br>
+The key components of the amphibious mode switching unit are detailed in Figure 2.5:<br>
 - **1 - Hinge**: Connects the torso and side plate.
 - **2 - Slot**: Allows the steering gear rocker arm to pass through.
 - **3 - Steering Gear Rocker Arm**: A unilateral arm that, when actuated, drives the side plate open or closed.
@@ -117,24 +117,24 @@ The key components of the amphibious mode switching unit are detailed in Figure 
 - **5 - Steering Gear**.
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
-        <img src="/website/P4_Figure_241.png" alt="Components of Amphibious Mode Switching" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P4_Figure_25.png" alt="Components of Amphibious Mode Switching" style="width: 100%;" class="hover-img"/>
     </div>
     <p style="text-align: center;">
-        <strong>Figure 2.4.1: Components of Amphibious Mode Switching</strong> <br>
+        <strong>Figure 2.5: Components of Amphibious Mode Switching</strong> <br>
     </p>
 </div>
 In jumping mode, the side plates are drawn in, and the hind legs tilt forward. In swimming mode, the side plates extend outward, opening the hind legs. mode switching is facilitated by the steering gear, which when actuated, causes the side plates to open or close accordingly.
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
-        <img src="/website/P4_Figure_242.png" alt="Principle of Amphibious Mode Switching" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P4_Figure_26.png" alt="Principle of Amphibious Mode Switching" style="width: 100%;" class="hover-img"/>
     </div>
     <p style="text-align: center;">
-        <strong>Figure 2.4.1: Principle of Amphibious Mode Switching</strong> <br>
+        <strong>Figure 2.6: Principle of Amphibious Mode Switching</strong> <br>
     </p>
 </div>
 <div style="text-align: center; margin: 20px 0;">
-    <video id="CamVideo" controls muted width="600" class="hover-img">
-        <source src="/website/P4_Movie_241.mp4" type="video/mp4">
+    <video id="CamVideo" controls muted style="width: 70%; max-width: 960px;" class="hover-img">
+        <source src="/website/P4_Movie_22.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
@@ -158,14 +158,14 @@ The gear set design parameters are as follows: primary gear m = 0.3mm, z = 24; s
 ### 3.2 Motion Simulation
 The simulation of the retraction and extension of the rear leg is achieved by setting a motor to the first stage gear. The jumping motion simulation includes this motor, ground contact, gravity, and the torque between the two side plates and the back legs.
 <div style="text-align: center; margin: 20px 0;">
-    <video id="CamVideo" controls muted width="560" class="hover-img">
-        <source src="/website/P4_Movie_321.mp4" type="video/mp4">
+    <video id="CamVideo" controls muted style="width: 70%; max-width: 960px;" class="hover-img">
+        <source src="/website/P4_Movie_31.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
 <div style="text-align: center; margin: 20px 0;">
-    <video id="CamVideo" controls muted width="560" class="hover-img">
-        <source src="/website/P4_Movie_322.mp4" type="video/mp4">
+    <video id="CamVideo" controls muted style="width: 70%; max-width: 960px;" class="hover-img">
+        <source src="/website/P4_Movie_32.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
@@ -173,20 +173,20 @@ The simulation of the retraction and extension of the rear leg is achieved by se
 ### 3.3 Rendering
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 36%; vertical-align: top;">
-        <img src="/website/P2_Figure_331_a.png" alt="Desk Grasp" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P4_Figure_31_a.png" style="width: 100%;" class="hover-img"/>
     </div>
     <div style="display: inline-block; text-align: center; width: 35%; vertical-align: top;">
-        <img src="/website/P2_Figure_331_b.png" alt="Shelf Grasp" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P4_Figure_31_b.png" style="width: 100%;" class="hover-img"/>
     </div>
     <p style="text-align: center;">
-        <strong>Figure 3.3.1: Rendering</strong>
+        <strong>Figure 3.1: Rendering</strong>
     </p>
 </div>
 
 ### 3.4 Exploded Views
 <div style="text-align: center; margin: 20px 0;">
-    <video id="CamVideo" controls muted width="560" class="hover-img">
-        <source src="/website/P4_Movie_341.mp4" type="video/mp4">
+    <video id="CamVideo" controls muted style="width: 70%; max-width: 960px;" class="hover-img">
+        <source src="/website/P4_Movie_33.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
@@ -203,13 +203,13 @@ For the final design solution, we selected the following components:
 5. **Arduino Nano Development Board:** As a microcontroller control unit.
 
 ### 4.2 Circuit Layout
-The prototype's circuit layout, which includes the jump function, is detailed in the following chapter. The amphibious mode conversion design was not included in the final circuit, hence the absence of the SG90 servo (Figure 4.2.1).
+The prototype's circuit layout, which includes the jump function, is detailed in the following chapter. The amphibious mode conversion design was not included in the final circuit, hence the absence of the SG90 servo (Figure 4.1).
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 40%; vertical-align: top;">
-        <img src="/website/P4_Figure_421.png" alt="Circuit Layout" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P4_Figure_41.png" alt="Circuit Layout" style="width: 100%;" class="hover-img"/>
     </div>
     <p style="text-align: center;">
-        <strong>Figure 4.2.1: Circuit Layout</strong> <br>
+        <strong>Figure 4.1: Circuit Layout</strong> <br>
     </p>
 </div>
 
@@ -228,21 +228,21 @@ The control functions include:<br>
 <span class="highlight"><em>Contributor: All group members</em></span>
 
 ### 5.1 Prototype
-We constructed a prototype for continuity and jump force testing (Figure 5.1.1).
+We constructed a prototype for continuity and jump force testing (Figure 5.1).
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 70%; vertical-align: top;">
-        <img src="/website/P4_Figure_511.png" alt="Prototype" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P4_Figure_51.png" alt="Prototype" style="width: 100%;" class="hover-img"/>
     </div>
     <p style="text-align: center;">
-        <strong>Figure 5.1.1: Prototype</strong> <br>
+        <strong>Figure 5.1: Prototype</strong> <br>
     </p>
 </div>
 
 ### 5.2 Prototype Test
 The continuity test demonstrated that the leg's motion trajectory meets our expectations, achieving continuous motion. However, the jump force test did not yield the desired results, with the robot failing to jump. We attribute this to: (1) the high density of 3D printing materials, resulting in a heavier overall weight; (2) the torsion spring's insufficient torque for jumping; (3) the "cantilever beam" issue due to one-end fixation of the shaft, causing leg skew and suboptimal torsion spring performance.
 <div style="text-align: center; margin: 20px 0;">
-    <video id="CamVideo" controls muted width="560" class="hover-img">
-        <source src="/website/P4_Movie_521.mp4" type="video/mp4">
+    <video id="CamVideo" controls muted style="width: 70%; max-width: 960px;" class="hover-img">
+        <source src="/website/P4_Movie_51.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>

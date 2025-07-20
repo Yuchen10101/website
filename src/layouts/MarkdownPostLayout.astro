@@ -15,32 +15,49 @@ import '../styles/global.css';
     <body>
         <Header />
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> 
-        <div class="content-wrapper">
-            <h1>{frontmatter.title}</h1>
-            <p><em><strong>Team</strong>: {frontmatter.team}</em></p>
-            <p><em><strong>Supervisor</strong>: {frontmatter.supervisor}</em></p>
-            <TableOfContents headings={headings} />
-            <article>
-                <slot />
-            </article>
+        <div class="layout-container">
+            <aside class="toc" id="toc">
+                <TableOfContents headings={headings} />
+            </aside>
+            <div class="content-wrapper">
+                <h1>{frontmatter.title}</h1>
+                <p><em><strong>Team</strong>: {frontmatter.team}</em></p>
+                <p><em><strong>Supervisor</strong>: {frontmatter.supervisor}</em></p>
+                <article>
+                    <slot />
+                </article>
+            </div>
         </div>
     </body>
 </html>
 
 <style>
+    .layout-container {
+        display: flex;
+        width: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .toc {
+        flex: 0 0 20%;
+        max-width: 20%;
+        padding-right: 2%;
+        box-sizing: border-box;
+    }
+
+    .content-wrapper {
+        flex: 1;
+        padding-left: 8%;
+        box-sizing: border-box;
+    }
+
     p {
         font-size: 1.3em;
         line-height: 1;
         margin-bottom: 1em;
-    }
-
-    .content-wrapper {
-        display: flex;
-        flex-direction: column;
-        margin-left: 310px;
-        padding: 20px;
-        width: calc(100% - 20px);
-        max-width: 1000px;
     }
 
     article {
@@ -49,16 +66,23 @@ import '../styles/global.css';
     }
 
     @media (max-width: 768px) {
+
+        .layout-container {
+            flex-direction: column;
+        }
+
         .toc {
-            position: relative;
-            width: auto;
-            height: auto;
-            border-right: none;
+            display: none;
+            max-width: 100%;
+            width: 100%;
+            padding: 0;
+            margin-bottom: 10px;
+            background-color: #f7f7f7;
         }
 
         .content-wrapper {
-            margin-left: 0;
-            width: auto;
+            padding-left: 0;
+            width: 100%;
         }
     }
 </style>

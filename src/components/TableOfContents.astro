@@ -31,15 +31,27 @@ function buildToc(headings) {
         position: fixed;
         top: 40px;
         left: 0;
-        width: 260px;
+        width: 20vw;
+        min-width: 180px;
+        max-width: 300px;
+        height: calc(100% - 60px);
         overflow-y: auto;
-        height: calc(100% - 50px);
-        padding-top: 10px;
-        padding-left: 0px;
-        padding-right: 40px;
-        background: rgba(248, 249, 250, 0.8);
+        padding: 10px 20px;
+        background: rgba(248, 249, 250, 0.9);
         border-right: 1px solid #dee2e6;
         z-index: 1000;
+        transition: transform 0.3s ease-in-out;
     }
 
+    @media (max-width: 768px) {
+        .toc {
+            transform: translateX(-100%);
+            position: fixed;
+            width: 70vw;
+        }
+
+        .toc.active {
+            transform: translateX(0);
+        }
+    }
 </style>

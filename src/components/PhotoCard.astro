@@ -1,7 +1,7 @@
 ---
 // PhotoCard.astro
 const imageSrc = "/website/photo.jpg";
-const email = "mailto:yyc0o9i8u@sjtu.edu.cn";
+const email = "mailto:yuchyang@uw.edu";
 const github = "https://github.com/Yuchen10101";
 const cv = "/website/My_CV.pdf";
 ---
@@ -15,7 +15,7 @@ const cv = "/website/My_CV.pdf";
                 <svg class="icon" aria-hidden="true" focusable="false" role="img">
                     <use xlink:href="#icon-envelope"></use>
                 </svg>
-                <span>yyc0o9i8u@sjtu.edu.cn</span>
+                <span>yuchyang@uw.edu</span>
             </a>
             <a href={github} class="contact-item">
                 <svg class="icon" aria-hidden="true" focusable="false" role="img">
@@ -38,12 +38,12 @@ const cv = "/website/My_CV.pdf";
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
         overflow: hidden;
         transition: transform 0.3s ease-in-out;
-        max-width: 400px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        width: 32%; 
+        max-width: 600px;
+        margin: 10px auto;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
     }
 
@@ -58,15 +58,15 @@ const cv = "/website/My_CV.pdf";
     }
 
     .contact-info {
-        padding: 5px;
+        padding: 0.8vw;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
     }
 
     .contact-item {
-        margin: 10px 0;
+        margin: 1em 0;
         text-decoration: none;
         color: rgba(0,0,0,0.7);
         display: flex;
@@ -74,13 +74,13 @@ const cv = "/website/My_CV.pdf";
     }
 
     .contact-item svg {
-        width: 20px;
-        height: 24px; 
+        width: 1.2rem;
+        height: 1.2rem; 
         fill: currentColor;
     }
 
     .contact-item span {
-        margin-left: 8px;
+        margin-left: 0.5em;
         font-size: 1rem;
     }
 

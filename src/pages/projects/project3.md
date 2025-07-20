@@ -22,17 +22,17 @@ With reference to the [JAKA Zu7](https://www.jaka.com/productDetails/JAKA_Zu_7) 
 
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 55%; vertical-align: top;">
-        <img src="/website/P3_Figure_111.png" alt="Desk Grasp" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P3_Figure_11.png" alt="Desk Grasp" style="width: 100%;" class="hover-img"/>
         <p style="text-align: center;">
-            <strong>Figure 1.1.1: Robotic Arm and its Main Components</strong>
+            <strong>Figure 1.1: Robotic Arm and its Main Components</strong>
         </p>
     </div>
 </div>
 
 ### 1.2 Overall Display
 <div style="text-align: center; margin: 20px 0;">
-    <video id="Rotate" controls muted width="400" class="hover-img">
-        <source src="/website/P3_Movie_111.mp4" type="video/mp4">
+    <video id="Rotate" controls muted style="width: 50%; max-width: 960px;" class="hover-img">
+        <source src="/website/P3_Movie_11.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
@@ -57,41 +57,41 @@ Following a similar analysis for the End_Joint, we've determined the correspondi
 The motor's rated speed is typically 3000 RPM, while the robotic arm joint operates at 30 RPM. With a deceleration ratio (i) of at least 100, and considering the harmonic reducer's efficiency of 0.85, a reduction ratio of at least 117.65 is needed. Therefore, we round this ratio to 120 for practical application.
 
 ### 2.2 Selections
-According to the above parameters and through market research, we locked [Harmonic](https://www.harmonicinc.com/) CSG series harmonic reducer(Table 2.2.1), [Inovance](https://www.inovance.eu/home) MS1-R series servo motor(Table 2.2.1) and [Sunrise Instruments (SRI)](https://www.srisensor.com/) M221X series torque sensor(Table 2.2.3). The final parameter summary is shown in Table 2.2.4.
+According to the above parameters and through market research, we locked [Harmonic](https://www.harmonicinc.com/) CSG series harmonic reducer(Table 2.1), [Inovance](https://www.inovance.eu/home) MS1-R series servo motor(Table 2.2) and [Sunrise Instruments (SRI)](https://www.srisensor.com/) M221X series torque sensor(Table 2.3). The final parameter summary is shown in Table 2.4.
 
 <div style="text-align: center;">
     <p style="text-align: center;">
-        <strong>Table 2.2.1: Harmonic CSG series reducer parameters</strong>
+        <strong>Table 2.1: Harmonic CSG series reducer parameters</strong>
     </p>
     <div style="display: inline-block; text-align: center; width: 55%; vertical-align: top;">
-        <img src="/website/P3_Table_221.png" alt="Harmonic CSG" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P3_Table_21.png" alt="Harmonic CSG" style="width: 100%;" class="hover-img"/>
     </div>
 </div>
 
 <div style="text-align: center;">
     <p style="text-align: center;">
-        <strong>Table 2.2.2: Inovance MS1-R series servo motor parameters</strong>
+        <strong>Table 2.2: Inovance MS1-R series servo motor parameters</strong>
     </p>
     <div style="display: inline-block; text-align: center; width: 55%; vertical-align: top;">
-        <img src="/website/P3_Table_222.png" alt="Inovance MS1-R" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P3_Table_22.png" alt="Inovance MS1-R" style="width: 100%;" class="hover-img"/>
     </div>
 </div>
 
 <div style="text-align: center;">
     <p style="text-align: center;">
-        <strong>Table 2.2.3: SRI M221X series torque sensor parameters</strong>
+        <strong>Table 2.3: SRI M221X series torque sensor parameters</strong>
     </p>
     <div style="display: inline-block; text-align: center; width: 55%; vertical-align: top;">
-        <img src="/website/P3_Table_223.png" alt="SRI M221X" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P3_Table_23.png" alt="SRI M221X" style="width: 100%;" class="hover-img"/>
     </div>
 </div>
 
 <div style="text-align: center;">
     <p style="text-align: center;">
-        <strong>Table 2.2.4: Selection summary</strong>
+        <strong>Table 2.4: Selection summary</strong>
     </p>
     <div style="display: inline-block; text-align: center; width: 55%; vertical-align: top;">
-        <img src="/website/P3_Table_224.png" alt="All selection" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P3_Table_24.png" alt="All selection" style="width: 100%;" class="hover-img"/>
     </div>
 </div>
 
@@ -100,37 +100,37 @@ According to the above parameters and through market research, we locked [Harmon
 
 ### 3.1 Denavit–Hartenberg Parameters
 
-We established the Denavit-Hartenberg (DH) coordinate system and parameters for the robotic arm, as shown in Figure 3.1.1(a) and Table 3.1.1. To simplify the kinematics derivation, we created a set of simplified DH parameters, depicted in Figure 3.1.1(b) and Table 3.1.2. This simplification led to d3 being zero, which in turn made our kinematics equations more concise. Note that these simplified parameters are exclusively used for deriving kinematic formulas; the original parameters are retained for all other purposes. The kinematic equivalence between the simplified and original DH parameters is verified by [DH_verify.m](https://github.com/Yuchen10101/robotics-project/blob/main/Kinematics/DH_verify.m).
+We established the Denavit-Hartenberg (DH) coordinate system and parameters for the robotic arm, as shown in Figure 3.1(a) and Table 3.1. To simplify the kinematics derivation, we created a set of simplified DH parameters, depicted in Figure 3.1(b) and Table 3.2. This simplification led to d3 being zero, which in turn made our kinematics equations more concise. Note that these simplified parameters are exclusively used for deriving kinematic formulas; the original parameters are retained for all other purposes. The kinematic equivalence between the simplified and original DH parameters is verified by [DH_verify.m](https://github.com/Yuchen10101/robotics-project/blob/main/Kinematics/DH_verify.m).
 
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 28%; vertical-align: top;">
-        <img src="/website/P3_Figure_311_a.png" alt="Original DH" style="width: 80%;" class="hover-img"/>
+        <img src="/website/P3_Figure_31_a.png" alt="Original DH" style="width: 80%;" class="hover-img"/>
         <p>(a)</p>
     </div>
     <div style="display: inline-block; text-align: center; width: 28%; vertical-align: top;">
-        <img src="/website/P3_Figure_311_b.png" alt="Simplified DH" style="width: 80%;" class="hover-img"/>
+        <img src="/website/P3_Figure_31_b.png" alt="Simplified DH" style="width: 80%;" class="hover-img"/>
         <p>(b)</p>
     </div>
     <p style="text-align: center;">
-        <strong>Figure 3.1.1: DH Parameters</strong> <br>
+        <strong>Figure 3.1: DH Parameters</strong> <br>
         (a) Original DH Parameters<br>
         (b) Simplified DH Parameters
     </p>
 </div>
 <div style="text-align: center;">
     <p style="text-align: center;">
-        <strong>Table 3.1.1: Original DH parameters </strong>
+        <strong>Table 3.1: Original DH parameters </strong>
     </p>
     <div style="display: inline-block; text-align: center; width: 55%; vertical-align: top;">
-        <img src="/website/P3_Table_311.png" alt="Original DH Para" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P3_Table_31.png" alt="Original DH Para" style="width: 100%;" class="hover-img"/>
     </div>
 </div>
 <div style="text-align: center;">
     <p style="text-align: center;">
-        <strong>Table 3.1.2: Simplified DH parameters</strong>
+        <strong>Table 3.2: Simplified DH parameters</strong>
     </p>
     <div style="display: inline-block; text-align: center; width: 55%; vertical-align: top;">
-        <img src="/website/P3_Table_312.png" alt="Simplified DH Para" style="width: 100%;" class="hover-img"/>
+        <img src="/website/P3_Table_32.png" alt="Simplified DH Para" style="width: 100%;" class="hover-img"/>
     </div>
 </div>
 
@@ -653,78 +653,79 @@ We have implemented a series of advanced kinematics and dynamics functions, incl
 ### 5.1 Workspace Visualization
 Monte Carlo method, also known as statistical simulation method, is a numerical method to solve mathematical problems by means of random sampling (pseudorandom numbers). With the Monte Carlo method, a large number of sampling points can be randomly selected to build a complete workspace of the robot as much as possible. The sampling process and its result are shown below.
 <div style="text-align: center; margin: 20px 0;">
-    <video id="WS1" controls muted width="400" class="hover-img">
-        <source src="/website/P3_Movie_511.mp4" type="video/mp4">
+    <video id="WS1" controls muted style="width: 50%; max-width: 960px;" class="hover-img">
+        <source src="/website/P3_Movie_51.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
 <div style="text-align: center; margin: 20px 0;">
-    <video id="WS2" controls muted width="400" class="hover-img">
-        <source src="/website/P3_Movie_512.mp4" type="video/mp4">
+    <video id="WS2" controls muted style="width: 50%; max-width: 960px;" class="hover-img">
+        <source src="/website/P3_Movie_52.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
-This function is realized in [workspace_process.m] and [workspace_quick_solution.m].
+
+This function is realized in [workspace_process.m](https://github.com/Yuchen10101/robotics-project/blob/main/Advanced_Functions/Workspace/workspace_process.m) and [workspace_quick_solution.m](https://github.com/Yuchen10101/robotics-project/blob/main/Advanced_Functions/Workspace/workspace_quick_solution.m).
 
 ### 5.2 RRT obstacle-avoided Path Planning
 The Rapidly-exploring Random Tree (RRT) algorithm is a probabilistic method for path planning in robotics and autonomous navigation. The algorithm operates by initiating a tree structure with the starting point as its root. It then iteratively improves the tree by extending it towards free space through Random sampling, checking for collisions with obstacles along the way.<br>
-When applying RRT to robotic arm obstacle avoidance, the algorithm extends the tree by adding new nodes that represent potential motion increments. Each new node is evaluated for collisions with the environment;  if a node does not collide with any obstacles, it is retained and can serve as the base for further extensions.  This process continues until a node is added that connects the tree to the target point, at which point a path from the start to the target has been found.<br>
+When applying RRT to robotic arm obstacle avoidance, the algorithm extends the tree by adding new nodes that represent potential motion increments. Each new node is evaluated for collisions with the environment;  if a node does not collide with any obstacles, it is retained and can serve as the base for further extensions.  This process continues until a node is added that connects the tree to the target point, at which point a path from the start to the target has been found. The detailed process is shown in flow chart (Figure 5.1).<br>
 Once a path from the start to the target is identified, it is typically a series of discrete points. To create a smooth trajectory from these points, techniques like quintic spline interpolation are applied to ensure continuity and differentiability.<br>
-The videos below show RRT results (orange for final path, yellow for explored but failed path).The joints' displacement, velocity and acceleration of final path are shown in Figure 5.2.1.
+The videos below show RRT results (orange for final path, yellow for explored but failed path).The joints' displacement, velocity and acceleration of final path are shown in Figure 5.2.
 
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
-        <img src="/website/P3_Figure_521.png" alt="RRT" style="width: 100%;" class="hover-img" />
+        <img src="/website/P3_Figure_51.png" alt="RRT" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
-        <strong>Figure 5.2.1: Flow Chart for RRT </strong>
+        <strong>Figure 5.1: Flow Chart for RRT </strong>
     </p>
 </div>
 <div style="text-align: center; margin: 20px 0;">
     <div style="display: inline-block; text-align: center; width: 400px; vertical-align: top;">
         <video controls muted width="100%" class="hover-img">
-            <source src="/website/P3_Movie_521.mp4" type="video/mp4">
+            <source src="/website/P3_Movie_53.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
     <div style="display: inline-block; text-align: center; width: 400px; vertical-align: top;">
         <video controls muted width="100%" class="hover-img">
-            <source src="/website/P3_Movie_522.mp4" type="video/mp4">
+            <source src="/website/P3_Movie_54.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
 </div>
 <div style="text-align: center; margin: 20px 0;">
     <video id="Rotate" controls muted width="400" class="hover-img">
-        <source src="/website/P3_Movie_533.mp4" type="video/mp4">
+        <source src="/website/P3_Movie_55.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 80%; vertical-align: top;">
-        <img src="/website/P3_Figure_522.png" alt="q_qd_qdd" style="width: 100%;" class="hover-img" />
+        <img src="/website/P3_Figure_52.png" alt="q_qd_qdd" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
-        <strong>Figure 5.2.2: Displacement, Velocity and Acceleration of Joints </strong> 
+        <strong>Figure 5.2: Displacement, Velocity and Acceleration of Joints </strong> 
     </p>
 </div>
 
 This RRT path planning and its visualization are implemented by [RRT_traj.m](https://github.com/Yuchen10101/robotics-project/blob/main/Advanced_Functions/RRT/RRT_traj.m) and [visualize_RRT.m](https://github.com/Yuchen10101/robotics-project/blob/main/Advanced_Functions/RRT/visualize_RRT.m). The [visualize_traj_and_para.m](https://github.com/Yuchen10101/robotics-project/blob/main/Advanced_Functions/RRT/visualize_traj_and_para.m) visualizes the curves of displacement, velocity and acceleration.
 
 ### 5.3 Ball Catching
-We set the physical parameters of the ball, including gravity and initial conditions, and calculated the ball's flight trajectory. The catchball function is defined to compute the robot's position and posture for catching the ball.  By using inverse kinematics and trajectory generation functions, we planned the robot's movements to ensure timely and accurate catching.  Verification of the robot's ability to grasp the ball was done through spatial and temporal conditions.  The detailed process is shown in flow chart (Figure 5.3.1). 
+We set the physical parameters of the ball, including gravity and initial conditions, and calculated the ball's flight trajectory. The catchball function is defined to compute the robot's position and posture for catching the ball.  By using inverse kinematics and trajectory generation functions, we planned the robot's movements to ensure timely and accurate catching.  Verification of the robot's ability to grasp the ball was done through spatial and temporal conditions. The detailed process is shown in flow chart (Figure 5.3). 
 
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 25%; vertical-align: top;">
-        <img src="/website/P3_Figure_531.png" alt="Ball Catching" style="width: 100%;" class="hover-img" />
+        <img src="/website/P3_Figure_53.png" alt="Ball Catching" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
-        <strong>Figure 5.3.1:  Flow Chart for Ball Catching</strong>
+        <strong>Figure 5.3:  Flow Chart for Ball Catching</strong>
     </p>
 </div>
 <div style="text-align: center; margin: 20px 0;">
-    <video id="Ball Catching" controls muted width="600" class="hover-img">
-        <source src="/website/P3_Movie_531.mp4" type="video/mp4">
+    <video id="Ball Catching" controls muted style="width: 70%; max-width: 960px;" class="hover-img">
+        <source src="/website/P3_Movie_56.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
@@ -761,17 +762,17 @@ $$
 Using Robotics Toolbox, we generate trajectories based on initial joint angle and target joint angle, and then draw corresponding displacement, velocity, acceleration and joint torque.
 
 <div style="text-align: center; margin: 20px 0;">
-    <video id="Dynamics" controls muted width="500" class="hover-img">
-        <source src="/website/P3_Movie_541.mp4" type="video/mp4">
+    <video id="Dynamics" controls muted style="width: 50%; max-width: 960px;" class="hover-img">
+        <source src="/website/P3_Movie_57.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 60%; vertical-align: top;">
-        <img src="/website/P3_Figure_541.png" alt="Dynamics" style="width: 100%;" class="hover-img" />
+        <img src="/website/P3_Figure_54.png" alt="Dynamics" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
-        <strong>Figure 5.4.1:  Joint Displacement, Velocity, Acceleration and Torque</strong>
+        <strong>Figure 5.4:  Joint Displacement, Velocity, Acceleration and Torque</strong>
     </p>
 </div>
 
@@ -781,42 +782,42 @@ This function is implemented by [Dynamics.m](https://github.com/Yuchen10101/robo
 <span class="highlight"><em>Contributor: Xiaoyang Jia</em></span>
 
 ### 6.1 Simulink Simulation Model
-Simulation is performed using the Simscape Multibody module in Simulink. After importing the.urdf file, the corresponding .SLX simulation file is automatically generated, which contains the main modules including the joint, the connecting rod and the corresponding coordinate transformation matrix (Figure 6.1.1, Figure 6.1.2).
+Simulation is performed using the Simscape Multibody module in Simulink. After importing the.urdf file, the corresponding .SLX simulation file is automatically generated, which contains the main modules including the joint, the connecting rod and the corresponding coordinate transformation matrix (Figure 6.1, Figure 6.2).
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 75%; vertical-align: top;">
-        <img src="/website/P3_Figure_611.png" alt="Simulink Model" style="width: 100%;" class="hover-img" />
+        <img src="/website/P3_Figure_61.png" alt="Simulink Model" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
-        <strong>Figure 6.1.1: Simulink Model </strong>
+        <strong>Figure 6.1: Simulink Model </strong>
     </p>
 </div>
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 85%; vertical-align: top;">
-        <img src="/website/P3_Figure_612.png" alt="Simulink Modules" style="width: 100%;" class="hover-img" />
+        <img src="/website/P3_Figure_62.png" alt="Simulink Modules" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
-        <strong>Figure 6.1.2: Some Modules </strong>
+        <strong>Figure 6.2: Some Modules </strong>
     </p>
 </div>
 
 ### 6.2 Comparison of Theoretical and Simulation Results
 According to the derivation of the dynamics formula in 5.4, we realized the theoretical prediction of the torque of each joint.
-We set trajectories for each joint (Figure 6.2.1), and compared the theoretical predicted torque of each joint with the simulated torque (Figure 6.2.2, Table 6.2.1). It can be seen that the results are consistent.
+We set trajectories for each joint (Figure 6.3), and compared the theoretical predicted torque of each joint with the simulated torque (Figure 6.4). It can be seen that the results are consistent.
 
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 50%; vertical-align: top;">
-        <img src="/website/P3_Figure_621.png" alt="Joint Trajectory" style="width: 100%;" class="hover-img" />
+        <img src="/website/P3_Figure_63.png" alt="Joint Trajectory" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
-        <strong>Figure 6.2.1: Joint Trajectory </strong>
+        <strong>Figure 6.3: Joint Trajectory </strong>
     </p>
 </div>
 <div style="text-align: center;">
     <div style="display: inline-block; text-align: center; width: 50%; vertical-align: top;">
-        <img src="/website/P3_Figure_622.png" alt="Torque Comparison" style="width: 100%;" class="hover-img" />
+        <img src="/website/P3_Figure_64.png" alt="Torque Comparison" style="width: 100%;" class="hover-img" />
     </div>
     <p style="text-align: center;">
-        <strong>Figure 6.2.2: Torque Comparison</strong>
+        <strong>Figure 6.4: Torque Comparison</strong>
     </p>
 </div>
 
