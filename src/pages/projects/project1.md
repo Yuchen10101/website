@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: 'A Vegetable Peeling Task for Contact-rich Manipulation'
+title: 'Contact-Rich Vegetable Peeling via Diffusion Policy Learning'
 description: 'Developed a contact-rich vegetable peeling solution on a humanoid dual-arm robot using CNN-based and Mamba-based diffusion policies, jointly modeling action trajectories and target contact forces from multimodal observations.'
 team: 'Yuchen Yang'
 supervisor: 'Prof. Xinjun Sheng, Prof. Yang Yu'
