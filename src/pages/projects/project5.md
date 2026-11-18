@@ -5,7 +5,7 @@ description: 'Realized iterative design process and machining process plan, incl
 team: 'Yuchen Yang'
 supervisor: 'Prof. Jingyu Pei'
 image:
-    url: '/website/Project5.png'
+    url: '/website/Project5_cover.webp'
     alt: 'Machining Process Plan.'
 ---
 This is a course project for [***ME3224-Manufacturing Process***](https://me.sjtu.edu.cn/news/135655.html), guided by Prof. [Jingyu Pei](https://me.sjtu.edu.cn/teacher_directory1/peijingyu.html) A machining process plan has been developed, embracing the concept of iterative design.

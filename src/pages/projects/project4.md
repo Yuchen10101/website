@@ -5,7 +5,7 @@ description: 'Designed a bionic frog robot with jumping function, swimming funct
 team: 'Yuchen Yang(Leader), Yiqin Ma, Xingyao He, Hongyu Ji and Zhenglei Li'
 supervisor: 'Prof. Xinjun Sheng'
 image:
-    url: '/website/Project4.png'
+    url: '/website/Project4_cover.webp'
     alt: 'Rendering of the bionic frog robot.'
 ---
 

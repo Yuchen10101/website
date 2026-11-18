@@ -5,7 +5,7 @@ description: 'Build the MuJoCo simulation environment for humanoid dual-arm robo
 team: 'Yuchen Yang'
 supervisor: 'Dr. Cheng Ding (JAKA Engineer)'
 image:
-    url: '/website/Project2.png'
+    url: '/website/Project2_cover.webp'
     alt: 'Simulation environment of desk grasp task.'
 ---
 

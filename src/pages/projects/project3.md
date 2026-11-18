@@ -5,7 +5,7 @@ description: 'Designed a self-designed 6-DoF robotic arm, where a series of kine
 team: 'Yuchen Yang(Leader), Yuxuan Chen, Qihong Hu, Zhouyi Lin and Xiaoyang Jia'
 supervisor: 'Prof. Zhenhua Xiong, Dr. Jianhu Wu'
 image:
-    url: '/website/Project3.gif'
+    url: '/website/Project3_cover.webp'
     alt: ' RRT of Robotic arm.'
 ---
 

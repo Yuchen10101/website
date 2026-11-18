@@ -5,7 +5,7 @@ description: 'Developed a contact-rich vegetable peeling solution on a humanoid 
 team: 'Yuchen Yang'
 supervisor: 'Prof. Xinjun Sheng, Prof. Yang Yu'
 image:
-    url: '/website/Project1.gif'
+    url: '/website/Project1_cover.webp'
     alt: 'Peeling Task.'
 ---
 
