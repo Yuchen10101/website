@@ -1,25 +1,25 @@
 ---
-//BaseLayout.astro
 import Header from '../components/FixedHeader.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-const { pageTitle } = Astro.props;
+interface Props { pageTitle: string; showTitle?: boolean; fullBleed?: boolean; }
+const { pageTitle, showTitle = true, fullBleed = false } = Astro.props;
 ---
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#a9c8df" />
         <meta name="generator" content={Astro.generator} />
         <title>{pageTitle}</title>
+        <script is:inline>const savedTheme = localStorage.getItem('theme'); document.documentElement.dataset.theme = savedTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day');</script>
     </head>
     <body>
         <Header />
-        <div class="main-container">
-            <div class="pageTitle">
-                <h1>{pageTitle}</h1>
-            </div>
+        <main class:list={{ 'main-container': !fullBleed }}>
+            {showTitle && <div class="pageTitle"><h1>{pageTitle}</h1></div>}
             <slot />
-        </div>
+        </main>
         <Footer />
     </body>
 </html>

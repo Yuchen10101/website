@@ -1,0 +1,24 @@
+---
+interface Props { src: string; alt: string; class?: string; mode?: 'mono' | 'color'; }
+const { src, alt, class: className = '', mode = 'mono' } = Astro.props;
+---
+<div class:list={['dither-image', className]} data-mode={mode}><img src={src} alt={alt} loading="lazy" /><canvas aria-hidden="true"></canvas></div>
+<script>
+    document.querySelectorAll('.dither-image').forEach((holder) => {
+        if (!(holder instanceof HTMLElement)) return;
+        const image = holder.querySelector('img'); const canvas = holder.querySelector('canvas');
+        if (!(image instanceof HTMLImageElement) || !(canvas instanceof HTMLCanvasElement)) return;
+        const render = () => { const bounds = holder.getBoundingClientRect(); const colorMode = holder.dataset.mode === 'color'; const scale = colorMode ? 2.4 : 5; const w = Math.max(24, Math.floor(bounds.width / scale)); const h = Math.max(24, Math.floor(bounds.height / scale)); const source = document.createElement('canvas'); source.width = w; source.height = h; const input = source.getContext('2d', { willReadFrequently: true }); const output = canvas.getContext('2d'); if (!input || !output || !image.naturalWidth) return; input.drawImage(image, 0, 0, w, h); const data = input.getImageData(0, 0, w, h); output.canvas.width = w; output.canvas.height = h; const bayer = [[0,8,2,10],[12,4,14,6],[3,11,1,9],[15,7,13,5]]; for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const index = (y * w + x) * 4; const threshold = (bayer[y % 4][x % 4] + .5) / 16 - .5; if (colorMode) { const shift = threshold * 30; data.data[index] = Math.max(0, Math.min(255, Math.round((data.data[index] * .72 + 18) / 28) * 28 + shift)); data.data[index + 1] = Math.max(0, Math.min(255, Math.round((data.data[index + 1] * .76 + 34) / 28) * 28 + shift)); data.data[index + 2] = Math.max(0, Math.min(255, Math.round((data.data[index + 2] * .9 + 46) / 28) * 28 + shift)); data.data[index + 3] = 255; } else { const lum = (.2126 * data.data[index] + .7152 * data.data[index + 1] + .0722 * data.data[index + 2]) / 255; data.data[index] = 10; data.data[index + 1] = 17; data.data[index + 2] = 24; data.data[index + 3] = lum > threshold + .5 ? 0 : 235; } } output.putImageData(data, 0, 0); };
+        // A failed decode before a lazy image is fetched used to leave the canvas blank
+        // forever. Render only after pixels are available and keep a load listener for lazy sources.
+        if (image.complete && image.naturalWidth) render();
+        else {
+            image.addEventListener('load', render, { once: true });
+            image.addEventListener('error', () => console.error(`Project image failed to load: ${image.currentSrc || image.src}`), { once: true });
+        }
+        new ResizeObserver(render).observe(holder);
+    });
+</script>
+<style>
+    .dither-image { position: relative; overflow: hidden; background: var(--sky-deep); aspect-ratio: 4 / 3; }.dither-image img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; }.dither-image canvas { display: block; width: 100%; height: 100%; image-rendering: pixelated; filter: invert(0); }.dither-image[data-mode='color'] canvas { filter: saturate(.82) contrast(1.07); }:global([data-theme='night']) .dither-image:not([data-mode='color']) canvas { filter: invert(1); }:global([data-theme='night']) .dither-image[data-mode='color'] canvas { filter: saturate(.68) brightness(.82) contrast(1.08); }
+</style>

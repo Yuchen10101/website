@@ -1,46 +1,7 @@
----
-// ResearchCard.astro
-import ResearchElement from '../components/ResearchElement.astro';
-const title = "RESEARCH"
----
-<div class="research-card">
-    <div class="vertical-title">{title}</div>
-    <ResearchElement
-        title="Characterizations of Voluntary and Involuntary Imagery in Aphantasia [Preprint]"
-        href="https://doi.org/10.31219/osf.io/n6xpr"
-        imageSrc="/website/Research1.png"
-        description='Suna Duan*, Yuchen Yang*, Kangxin Li, and Binglei Zhao'
-        pdflink = "/website/Characterizations of Voluntary and Involuntary Imagery in Aphantasia.pdf"
-    />
-</div>
-
+<section class="research-section"><p class="section-kicker">02 / RESEARCH</p>
+    <div class="research-entry"><p class="entry-index">01</p><div><h2>SwapBot: Tool-Centric Robot Manipulation via Interchangeable End-Effectors and Tactile Sensing</h2><p>A modular tool-changing system with tactile sensing for contact-rich manipulation. <em>[preprint, 2026]</em></p><p class="authors">Yunchu Zhang, Ray Song, Junhan Jiao, Liyiming Ke, <strong>Yuchen Yang</strong>, et al.</p></div><a href="https://arxiv.org/abs/2610.40646" aria-label="Read the SwapBot paper on arXiv">↗</a></div>
+    <div class="research-entry"><p class="entry-index">02</p><div><h2>Voluntary and involuntary imagery in aphantasia.</h2><p>Characterizations of Voluntary and Involuntary Imagery in Aphantasia <em>[preprint]</em></p><p class="authors">Suna Duan*, <strong>Yuchen Yang*</strong>, Kangxin Li, and Binglei Zhao</p></div><a href="https://doi.org/10.31219/osf.io/n6xpr" aria-label="Read the aphantasia preprint">↗</a></div>
+</section>
 <style>
-    .research-card {
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-        position: relative;
-        overflow: hidden;
-        width: 80%; 
-        max-width: 1600px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        transition: transform 0.3s ease-in-out;
-    }
-    .research-card:hover {
-        transform: translateY(-5px);
-    }
-
-    .vertical-title {
-        position: absolute;
-        top: 0;
-        left: 0;
-        writing-mode: vertical-lr;
-        transform: rotate(180deg);
-        margin: 20px;
-        font-size: 2rem;
-        font-weight: bold;
-        color: #333;
-    }
+    .research-section { padding: 0 0 9rem; }.research-entry { display: grid; grid-template-columns: 4rem minmax(0, 1fr) auto; gap: 1rem; padding: 1.5rem 0; border-top: 1px solid var(--line); }.research-entry:last-child { border-bottom: 1px solid var(--line); }.entry-index, .authors { font-size: .7rem; color: var(--muted-ink); }.research-entry p { margin: 0; }.research-entry h2 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(2rem, 4vw, 3.6rem); line-height: .95; letter-spacing: -.04em; margin: 0 0 1rem; max-width: 900px; }.research-entry a { font-size: 1.4rem; text-decoration: none; }.authors { margin-top: .8rem !important; }@media (max-width: 500px) { .research-entry { grid-template-columns: 2rem 1fr auto; } }
 </style>

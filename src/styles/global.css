@@ -1,34 +1,17 @@
-/* global.css */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Noto+Serif+SC:wght@300;400;500&display=swap');
 
-html {
-    background-color: #ffffff;
-    color: rgba(0,0,0,1);
-}
-
-html, body {
-    margin: 0;
-    padding-top: 30px;
-    font-family: 'Times New Roman', serif;
-    font-size: 1rem; /* 16px */
-}
-
-.main-container {
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-left: 25px;
-    padding-right: 25px;
-}
-
-.pageTitle{
-    padding-left: 60px;
-}
-
-a {
-    color: #4d5286;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    text-decoration: underline;
-    color: #a7a7a7;
-}
+:root { --sky: #B1D2FC; --sky-deep: #83AFE7; --ink: #0a1118; --muted-ink: rgba(10, 17, 24, .62); --paper: rgba(227, 239, 255, .58); --line: rgba(10, 17, 24, .34); --grid-dot: rgba(10, 17, 24, .13); --selection: rgba(10, 17, 24, .2); }
+:root[data-theme='night'] { --sky: #102a4a; --sky-deep: #07172f; --ink: #eef5fa; --muted-ink: rgba(238, 245, 250, .68); --paper: rgba(9, 29, 52, .52); --line: rgba(238, 245, 250, .32); --grid-dot: rgba(238, 245, 250, .13); --selection: rgba(238, 245, 250, .2); }
+html { background: var(--sky); scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background-color: var(--sky); background-image: radial-gradient(var(--grid-dot) .7px, transparent .8px); background-size: 6px 6px; color: var(--ink); font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 15px; line-height: 1.65; transition: background-color 400ms ease, color 300ms ease; }
+* { box-sizing: border-box; }
+::selection { background: var(--selection); }
+a { color: inherit; text-underline-offset: .25em; }
+img, video { max-width: 100%; }
+button { font: inherit; }
+.main-container { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+.pageTitle { margin: 0; padding-top: 9rem; }
+.pageTitle h1 { font-size: clamp(2.2rem, 7vw, 5.5rem); letter-spacing: -.07em; line-height: .85; margin: 0 0 4rem; }
+.section-kicker { color: var(--muted-ink); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; }
+.section-heading { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(2.5rem, 7vw, 5rem); line-height: .9; letter-spacing: -.04em; margin: .4rem 0 2.5rem; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; } }

@@ -1,86 +1,11 @@
 ---
-// SelfIntroCard.astro
-const title = "About Me";
+import DigitalPortrait from './DigitalPortrait.astro';
+const assetBase = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
-<div class="intro-card">
-    <div class="content">
-        <h2>{title}</h2>
-        <p>
-            Hi there! I recently received my Bachelor's degree in Mechanical Engineering from 
-            <a href="https://me.sjtu.edu.cn/en/">Shanghai Jiao Tong University</a>, 
-            where I worked with Prof. 
-            <a href="https://me.sjtu.edu.cn/en/FullTimeTeacher/shengxinjun.html">Xinjun Sheng</a> 
-            on robot learning. I also had the opportunity to collaborate with Dr. 
-            <a href="https://lwdlab.sjtu.edu.cn/teachers/89.html">Binglei Zhao</a> 
-            on research in cognitive science and neuroimaging.
-        </p>
-        <p>
-            Starting this fall, I will be pursuing my Master's degree in Mechanical Engineering at the 
-            <a href="https://www.me.washington.edu/">University of Washington</a>.
-        </p>
-        <p>
-            My research interests lie in human-robot interaction and multimodal information understanding.
-        </p>
-    </div>
-</div>
-
+<section class="about-section" id="about">
+    <div class="intro-copy"><p class="section-kicker">01 / SIGNALS</p><h1>Yuchen Yang<br /><em lang="zh-Hans">杨雨晨</em></h1><p class="focus">Robotics · Representation Learning · Multimodal Understanding</p><p>I work on how robots build useful representations from multimodal information, and how those representations support capable interaction in the physical world.</p><p>Previously at Shanghai Jiao Tong University; now pursuing an M.S. in Mechanical Engineering at the University of Washington.</p><a class="text-link" href={`${assetBase}My_CV.pdf`}>Read CV ↗</a></div>
+    <div class="portrait"><DigitalPortrait src={`${assetBase}selfie.jpg`} alt="Digital portrait of Yuchen Yang" /></div>
+</section>
 <style>
-.intro-card {
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out;
-    width: 55%;
-    max-width: 700px;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    max-height: 500px;
-}
-.intro-card:hover {
-    transform: translateY(-5px);
-}
-
-.content {
-    padding: 3vw;
-    text-align: left;
-    overflow-y: auto;
-    max-height: 100%;
-    width: 100%;
-    box-sizing: border-box;  
-}
-.content::-webkit-scrollbar {
-    width: 8px;
-}
-.content::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,0.2);
-    border-radius: 4px;
-}
-.content::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-
-h2 {
-    margin: 1.2em 0;
-    font-size: 1.8rem;
-}
-
-a {
-    color:rgb(98, 98, 98);
-    text-decoration: underline;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color:rgb(167, 167, 167);
-}
-
-p {
-    margin: 1em 0;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: rgba(0,0,0,1);
-}
+    .about-section { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(220px, .8fr); gap: clamp(2rem, 8vw, 9rem); align-items: end; padding: 8rem 0 10rem; }.intro-copy { max-width: 650px; }.intro-copy h1 { font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(4rem, 10vw, 8rem); font-weight: 400; letter-spacing: -.08em; line-height: .73; margin: .8rem 0 2.5rem; }.intro-copy h1 em { font-family: 'Noto Serif SC', 'Songti SC', serif; font-weight: 300; font-style: normal; font-size: .72em; letter-spacing: .12em; }.focus { max-width: 35rem; margin: 0 0 2.2rem; font-size: .82rem; letter-spacing: .05em; text-transform: uppercase; }.intro-copy > p:not(.section-kicker):not(.focus) { max-width: 37rem; }.text-link { display: inline-block; margin-top: 1.2rem; font-size: .75rem; text-decoration: none; border-bottom: 1px solid var(--ink); }.portrait { position: relative; width: min(100%, 360px); justify-self: end; aspect-ratio: 3 / 4; transform: translate(-20px, 18px); }@media (max-width: 700px) { .about-section { grid-template-columns: 1fr; padding: 5rem 0 6rem; }.portrait { width: 58%; justify-self: start; transform: translate(-8px, 12px); } }
 </style>

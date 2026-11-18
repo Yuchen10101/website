@@ -1,47 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RainSurface from '../components/RainSurface.astro';
 import SelfIntroCard from '../components/SelfIntroCard.astro';
-import PhotoCard from '../components/PhotoCard.astro';
 import ResearchCard from '../components/ResearchCard.astro';
 import ExperienceCard from '../components/ExperienceCard.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-const pageTitle = "Yuchen Yang 杨雨晨 💬";
 ---
-<BaseLayout pageTitle={pageTitle}>
-    <div class="card-container">
-        <SelfIntroCard />
-        <PhotoCard />
-    </div>
-    <ResearchCard />
-    <ExperienceCard />
-    <ProjectCard />
+<BaseLayout pageTitle="Yuchen Yang — Robotics" showTitle={false} fullBleed={true}>
+    <RainSurface />
+    <div class="home-content"><SelfIntroCard /><ResearchCard /><ExperienceCard /><ProjectCard /></div>
 </BaseLayout>
-
-<style>
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%; 
-    max-width: 1600px;
-}
-
-.card {
-    flex: 1 1 400px;
-    margin-right: 20px;
-}
-
-.card:last-child {
-    margin-right: 0;
-}
-
-@media (max-width: 768px) {
-    .card {
-        flex-basis: 100%;
-        margin-right: 0;
-    }
-}
-</style>
+<style>.home-content { width: min(1180px, calc(100% - 48px)); margin: -16svh auto 0; position: relative; z-index: 2; }</style>

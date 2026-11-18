@@ -6,27 +6,22 @@ const allPosts = await Astro.glob('./*.md');
 const pageTitle = "Projects";
 ---
 <BaseLayout pageTitle={pageTitle}>
-	<ol class="project-list">
-		{allPosts.map((post) => 
-		<ProjectElement url={post.url} title={post.frontmatter.title} 
+	<div class="project-list">
+		{allPosts.map((post, index) =>
+		<ProjectElement number={index + 1} url={post.url} title={post.frontmatter.title}
 		imageSrc={post.frontmatter.image.url} description={post.frontmatter.description} />)}
-	</ol>
+	</div>
 </BaseLayout>
 
 <style>
 	.project-list {
-		list-style: none;
-		padding: 0;
-		margin: 10px;
+		margin: 0 0 5rem;
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-		grid-gap: 10px;
+		border-top: 1px solid var(--line);
 	}
 	
 	.project-list li {
-		border: 1px solid #ddd;
-		border-radius: 5px;
-		overflow: hidden;
-		transition: transform 0.3s ease-in-out;
+		border: 0;
 	}
 	</style>

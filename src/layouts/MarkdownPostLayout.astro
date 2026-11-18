@@ -10,6 +10,7 @@ import '../styles/global.css';
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
+        <script is:inline>const savedTheme = localStorage.getItem('theme'); document.documentElement.dataset.theme = savedTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day');</script>
         <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.15.1/dist/katex.css" integrity="sha384-WsHMgfkABRyG494OmuiNmkAOk8nhO1qE+Y6wns6v+EoNoTNxrWxYpl5ZYWFOLPCM" crossorigin="anonymous">
     </head>
     <body>
@@ -77,7 +78,7 @@ import '../styles/global.css';
             width: 100%;
             padding: 0;
             margin-bottom: 10px;
-            background-color: #f7f7f7;
+            background-color: var(--paper);
         }
 
         .content-wrapper {

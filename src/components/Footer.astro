@@ -1,36 +1,7 @@
 ---
-// Footer.astro
+const assetBase = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
-<footer class="site-footer">
-    <p>
-        This is a simple personal website that is currently enriching content.
-        If there's any inspiration here, feel free to use the 
-        <a href="https://github.com/Yuchen10101/website">source code</a>.
-    </p>
-</footer>
-
+<footer class="site-footer" id="contact"><p><span>05 / CONTACT</span> <a href="mailto:yuchyang@uw.edu">yuchyang@uw.edu</a> · <a href="https://github.com/Yuchen10101">github</a> · <a href={`${assetBase}My_CV.pdf`}>cv</a></p><p class="copyright">Yuchen Yang © {new Date().getFullYear()}</p></footer>
 <style>
-    .site-footer {
-        background-color: #bebebe;
-        color: white; 
-        text-align: center;
-        padding: 5px 0;
-        position: relative;
-        bottom: 0;
-        width: 100%;
-    }
-
-    .site-footer p {
-        margin: 0;
-        font-size: 0.9rem;
-    }
-
-    .site-footer a {
-        color: rgb(60, 60, 60);
-        text-decoration: none;
-    }
-
-    .site-footer a:hover {
-        text-decoration: underline;
-    }
+    .site-footer { width: min(1180px, calc(100% - 48px)); margin: 9rem auto 0; padding: 1.2rem 0 2rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 1rem; font-size: .72rem; }.site-footer p { margin: 0; }.site-footer span { color: var(--muted-ink); margin-right: 1rem; }.copyright { color: var(--muted-ink); }@media (max-width: 600px) { .site-footer { flex-direction: column; margin-top: 5rem; } }
 </style>

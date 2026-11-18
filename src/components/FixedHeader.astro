@@ -1,38 +1,16 @@
 ---
-//FixedHeader.astro
-import Breadcrumbs from '../components/Breadcrumbs.astro';
+const base = import.meta.env.BASE_URL;
 ---
-<header class="fixed-header">
-    <div class="header-container">
-        <div class="breadcrumbs-container">
-            <Breadcrumbs />
-        </div>
-    </div>
+<header class="site-header">
+    <a class="wordmark" href={base}>YY<span> / </span>RC</a>
+    <nav aria-label="Primary navigation">
+        <a href={`${base}#about`}>about</a><a href={`${base}#work`}>work</a><a href={`${base}#contact`}>contact</a>
+        <button class="theme-toggle" type="button" aria-label="Switch colour theme">◐</button>
+    </nav>
 </header>
+<script>document.querySelector('.theme-toggle')?.addEventListener('click', () => { const root = document.documentElement; const next = root.dataset.theme === 'night' ? 'day' : 'night'; root.dataset.theme = next; localStorage.setItem('theme', next); });</script>
 <style>
-    .fixed-header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.8);
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
-        padding: 0;
-    }
-
-    .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 0 auto;
-        max-width: 1200px;
-        padding: 10px;
-    }
-
-    .breadcrumbs-container {
-        padding-bottom: 15px;
-        margin-right: auto;
-    }
-
+    .site-header { position: fixed; inset: 0 0 auto; z-index: 20; display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; color: var(--ink); pointer-events: none; }
+    .site-header > * { pointer-events: auto; }.wordmark, nav { font-size: .72rem; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }.wordmark span { opacity: .45; }nav { display: flex; align-items: center; gap: 1.2rem; }nav a { text-decoration: none; border-bottom: 1px solid transparent; }nav a:hover, nav a:focus-visible { border-color: currentColor; }.theme-toggle { appearance: none; border: 1px solid var(--line); width: 28px; height: 28px; background: transparent; color: var(--ink); cursor: pointer; line-height: 1; }
+    @media (max-width: 560px) { .site-header { padding: 15px; } nav { gap: .7rem; } nav a { display: none; } }
 </style>

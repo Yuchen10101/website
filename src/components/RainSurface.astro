@@ -1,0 +1,174 @@
+<section class="rain-scroll" aria-label="An interactive water surface">
+    <div class="rain-stage">
+        <canvas class="rain-canvas" aria-hidden="true"></canvas>
+        <div class="rain-copy" aria-live="polite"><p class="rain-name"><span class="rain-han" lang="zh-Hans">雨晨</span> <span>Yuchen</span></p><p class="rain-meaning">A rainy morning.</p></div>
+        <p class="scroll-hint">move gently / scroll to descend ↓</p>
+    </div>
+</section>
+
+<script>
+    const canvas = document.querySelector('.rain-canvas');
+    const stage = document.querySelector('.rain-stage');
+    const copy = document.querySelector('.rain-copy');
+
+    if (canvas instanceof HTMLCanvasElement && stage && copy) {
+        const ctx = canvas.getContext('2d');
+        let width = 0;
+        let height = 0;
+        let lastX = -999;
+        let lastY = -999;
+        let lastDrop = 0;
+        let lastMove = 0;
+        let nextStride = 20;
+        let lastGrainFrame = 0;
+        const impacts: { x: number; y: number; born: number; strength: number; phase: number }[] = [];
+        const grains: { x: number; y: number; length: number; speed: number; alpha: number }[] = [];
+
+        // The top of the canvas is visually farther away, but there is no visible horizon.
+        const depthAt = (y: number) => Math.max(0, Math.min(1, y / Math.max(1, height)));
+
+        const addImpact = (x: number, y: number, now: number) => {
+            impacts.push({
+                x,
+                y,
+                born: now,
+                strength: .7 + Math.random() * .7,
+                phase: Math.random() * Math.PI * 2,
+            });
+            if (impacts.length > 16) impacts.shift();
+            nextStride = 14 + Math.random() * 24;
+        };
+
+        const point = (event: PointerEvent) => {
+            const rect = stage.getBoundingClientRect();
+            const x = (event.clientX - rect.left) / rect.width * width;
+            const y = (event.clientY - rect.top) / rect.height * height;
+            const now = performance.now();
+            const distance = Math.hypot(x - lastX, y - lastY);
+
+            // One impact is deliberately placed every varied distance/time interval,
+            // rather than at every pointer event.
+            if (distance > nextStride && now - lastDrop > 170) {
+                addImpact(x, y, now);
+                lastX = x;
+                lastY = y;
+                lastDrop = now;
+            }
+            lastMove = now;
+            copy.classList.add('is-visible');
+        };
+
+        const resize = () => {
+            const rect = stage.getBoundingClientRect();
+            width = Math.max(160, Math.floor(rect.width / 2.6));
+            height = Math.max(140, Math.floor(rect.height / 2.6));
+            canvas.width = width;
+            canvas.height = height;
+            grains.length = 0;
+            const grainCount = Math.floor(width * height / 210);
+            for (let index = 0; index < grainCount; index++) {
+                grains.push({ x: Math.random() * width, y: Math.random() * height, length: 3 + Math.random() * 7, speed: .38 + Math.random() * .9, alpha: .025 + Math.random() * .09 });
+            }
+        };
+
+        const drawWaterGrain = (now: number, night: boolean) => {
+            if (!ctx) return;
+            const elapsed = Math.min(2.2, (now - lastGrainFrame || 16) / 16);
+            lastGrainFrame = now;
+            const ink = night ? '238,245,250' : '10,17,24';
+            for (const grain of grains) {
+                // All drops travel in the same diagonal direction; only their speed varies.
+                grain.y += grain.speed * elapsed;
+                grain.x += grain.speed * .19 * elapsed;
+                if (grain.y > height + 4 || grain.x < -8 || grain.x > width + 8) {
+                    grain.x = Math.random() * width;
+                    grain.y = -Math.random() * 10;
+                    grain.length = 3 + Math.random() * 7;
+                    grain.speed = .38 + Math.random() * .9;
+                }
+                // A moving two-dimensional density field controls where rain gathers.
+                // It creates temporary vertical and horizontal gaps without changing the fall direction.
+                const densityField = Math.sin(grain.x * .075 + now / 960) + Math.sin(grain.y * .12 - now / 740) + Math.sin((grain.x + grain.y) * .045 + now / 1300);
+                const density = Math.max(0, Math.min(1, (densityField + .75) / 3.2));
+                // Keep a soft baseline rain everywhere; the density field only modulates it.
+                const visibility = .38 + density * .62;
+                ctx.fillStyle = `rgba(${ink},${grain.alpha * (.35 + depthAt(grain.y)) * visibility * 1.55})`;
+                for (let segment = 0; segment < grain.length; segment++) {
+                    ctx.fillRect(Math.round(grain.x + segment * .19), Math.round(grain.y + segment), 1, 1);
+                }
+            }
+        };
+
+        const drawImpact = (impact: typeof impacts[number], now: number, night: boolean) => {
+            if (!ctx) return;
+            const age = now - impact.born;
+            if (age > 4700) return;
+            const depth = depthAt(impact.y);
+            const perspectiveScale = .32 + depth * 1.5;
+            const verticalCompression = .22 + depth * .26;
+            const waveSpeed = 0.042; // canvas pixels / ms before perspective scaling
+            const spacing = 14 + impact.strength * 3;
+            const ringCount = Math.min(7, Math.floor(age / 380) + 1);
+            const ink = night ? '238,245,250' : '10,17,24';
+
+            // A single drop continually emits several wavefronts: r_n = v·t − n·λ.
+            // The original fine, point-built line is retained, now projected as an ellipse.
+            ctx.save();
+            ctx.globalCompositeOperation = night ? 'screen' : 'multiply';
+            for (let ring = 0; ring < ringCount; ring++) {
+                const physicalRadius = age * waveSpeed - ring * spacing;
+                if (physicalRadius < 1) continue;
+                const fade = Math.max(0, 1 - physicalRadius / 160) * Math.max(.14, 1 - age / 5100);
+                const rx = physicalRadius * perspectiveScale;
+                const ry = rx * verticalCompression;
+                const steps = Math.max(18, Math.ceil(Math.PI * (3 * (rx + ry) - Math.sqrt((3 * rx + ry) * (rx + 3 * ry))) * 1.05));
+                for (let step = 0; step < steps; step++) {
+                    const angle = step / steps * Math.PI * 2;
+                    const wobble = Math.sin(angle * 7 + impact.phase) * .8;
+                    // Very occasional gaps preserve the rain-grain quality while still reading as a line.
+                    if ((step + Math.floor(age / 130) + ring * 3) % 13 === 0) continue;
+                    ctx.fillStyle = `rgba(${ink},${fade * (.36 + Math.sin(step * .73 + impact.phase) * .11)})`;
+                    ctx.fillRect(Math.round(impact.x + Math.cos(angle) * (rx + wobble)), Math.round(impact.y + Math.sin(angle) * (ry + wobble * verticalCompression)), 1, 1);
+                }
+            }
+            ctx.restore();
+        };
+
+        const draw = (now: number) => {
+            if (!ctx) return;
+            const night = document.documentElement.dataset.theme === 'night';
+            ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--sky').trim() || (night ? '#102a4a' : '#B1D2FC');
+            ctx.fillRect(0, 0, width, height);
+
+            drawWaterGrain(now, night);
+
+            for (let index = impacts.length - 1; index >= 0; index--) {
+                const impact = impacts[index];
+                if (now - impact.born > 4700) impacts.splice(index, 1);
+                else drawImpact(impact, now, night);
+            }
+
+            if (now - lastMove > 1700) copy.classList.remove('is-visible');
+            requestAnimationFrame(draw);
+        };
+
+        resize();
+        new ResizeObserver(resize).observe(stage);
+        stage.addEventListener('pointermove', point, { passive: true });
+        requestAnimationFrame(draw);
+    }
+</script>
+
+<style>
+    .rain-scroll { height: 165svh; margin-top: -1px; }
+    .rain-stage { height: 100svh; position: sticky; top: 0; overflow: hidden; background: var(--sky); }
+    .rain-canvas { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+    .rain-copy { position: absolute; top: 14vh; right: clamp(24px, 7vw, 110px); text-align: right; opacity: 0; transform: translateY(-8px); transition: opacity 700ms steps(7), transform 700ms steps(7); pointer-events: none; }
+    .rain-copy::before { content: ''; position: absolute; inset: -20px -10px; background-image: radial-gradient(var(--ink) .55px, transparent .7px); background-size: 5px 5px; opacity: .25; mask-image: linear-gradient(90deg, transparent, black 30%, black 80%, transparent); }
+    .rain-copy.is-visible { opacity: 1; transform: translateY(0); }
+    .rain-name { font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(3.2rem, 7vw, 6.5rem); letter-spacing: -.08em; line-height: .8; margin: 0; white-space: nowrap; }
+    .rain-name .rain-han { font-family: 'Noto Serif SC', 'Songti SC', serif; font-weight: 300; font-size: 1.05em; letter-spacing: .11em; }
+    .rain-name > span:last-child { display: inline-block; margin-left: .25em; font-size: .52em; letter-spacing: .025em; }
+    .rain-meaning { font-size: .68rem; letter-spacing: .08em; margin: 1.1rem 0 0; text-transform: uppercase; }
+    .scroll-hint { position: absolute; left: 24px; bottom: 22px; margin: 0; font-size: .65rem; letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
+</style>
